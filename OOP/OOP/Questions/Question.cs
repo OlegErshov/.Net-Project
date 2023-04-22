@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOP.VoiceService;
 
-namespace OOP
+namespace OOP.Questions
 {
     internal class Question : Voice
     {
         public List<string>? question { get; set; }
-        public List<string>? Answer { get; set; }  
+        public List<string>? Answer { get; set; }
 
         public List<string>? Words { get; set; }
 
-        public Question(List<string> q, List<string> a, List<string> w) {
-            this.question = q;
-            this.Answer = a;
-            this.Words = w;
+        public Question(List<string> q, List<string> a, List<string> w)
+        {
+            question = q;
+            Answer = a;
+            Words = w;
         }
 
         bool CheakAnswer(List<string> answer)
         {
             var result = Answer.Except(answer);
-            if(result == null)
+            if (result == null)
             {
-                return false; 
+                return false;
             }
             return true;
         }
