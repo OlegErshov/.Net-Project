@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOP
+namespace OOP.Questions
 {
     public interface IQuestionFabric
     {
@@ -12,7 +12,7 @@ namespace OOP
         int AnswerByInt { get; set; }
         string AnswerByString { get; set; }
 
-        
+
 
         bool cheakAnswer(string ans);
 

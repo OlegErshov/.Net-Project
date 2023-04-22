@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace OOP
+namespace OOP.Authorization
 {
     public class User
     {
-        public User(string email, string login, string password) {
-            this.Email = email;
-            this.Login = login;
-            this.Password = password;
+        public User(string email, string login, string password)
+        {
+            Email = email;
+            Login = login;
+            Password = password;
         }
         public string Email
         {
-            get ;
+            get;
             set;
         }
 
@@ -39,7 +40,7 @@ namespace OOP
         {
             string pattern = @"([a-zA-Z\d]+@[a-z]+\.[a-z]+)";
 
-            if(!Regex.Match(email,pattern).Success)
+            if (!Regex.Match(email, pattern).Success)
             {
                 return false;
             }
@@ -51,7 +52,8 @@ namespace OOP
         {
             string pattern = @"([\\da-zA-Z\\./_])";
 
-            if(!Regex.Match(password,pattern).Success) {
+            if (!Regex.Match(password, pattern).Success)
+            {
                 return false;
             }
             return true;
