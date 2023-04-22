@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOP
+namespace OOP.Authorization
 {
     public class AuthorizationService : IAuthorization
     {
@@ -16,13 +16,14 @@ namespace OOP
 
         public void Login()
         {
-            
+
         }
 
         public void Registration(string email, string login, string password)
         {
-            if(!Exist(email)) {
-                _users.Add(new User(email,login,password));
+            if (!Exist(email))
+            {
+                _users.Add(new User(email, login, password));
             }
             else
             {

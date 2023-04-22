@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOP
+namespace OOP.Questions
 {
     public class GrammaQuestion : IQuestionFabric
     {
-        public GrammaQuestion(string question, string ans) {
+        public GrammaQuestion(string question, string ans)
+        {
             Question = question;
             AnswerByString = ans;
         }
         public string Question { get; set; }
         public int AnswerByInt { get; set; }
         public string AnswerByString { get; set; }
-   
+
 
         public bool cheakAnswer(string ans)
         {
-            if(ans == AnswerByString)
+            if (ans == AnswerByString)
             {
                 return true;
             }
@@ -27,7 +28,7 @@ namespace OOP
 
         public bool cheakAnswer(int ans)
         {
-            if(ans == AnswerByInt)
+            if (ans == AnswerByInt)
             {
                 return true;
             }

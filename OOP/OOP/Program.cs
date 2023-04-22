@@ -1,4 +1,4 @@
-﻿using OOP;
+﻿using OOP.Authorization;
 using OOP.VoiceService;
 
 string email = "okezdfs@mail.ru";
