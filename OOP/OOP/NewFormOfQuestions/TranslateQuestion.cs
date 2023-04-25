@@ -27,7 +27,7 @@ namespace OOP.NewFormOfQuestions
             _questions = question;
         }
 
-        public bool CheakQuestion(List<string> answer) {
+        public bool Cheak(List<string> answer) {
             for(int i = 0; i < answer.Count(); i++)
             {
                 if (answer[i] != _answer[i])

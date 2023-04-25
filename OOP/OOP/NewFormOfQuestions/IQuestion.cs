@@ -8,5 +8,6 @@ namespace OOP.NewFormOfQuestions
 {
     internal interface IQuestion
     {
+        
     }
 }

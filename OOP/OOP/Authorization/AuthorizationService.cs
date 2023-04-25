@@ -14,9 +14,25 @@ namespace OOP.Authorization
             return ex;
         }
 
-        public void Login()
+        public User Login(string email, string password)
         {
-
+            User user = new User();
+            if (Exist(email))
+            {
+                var us = _users.Find(p => p.Email == email);
+                if(us?.Password == password)
+                {
+                    user = us;
+                }
+                else
+                {
+                    // исключение о неправильном вводе пароля
+                    Exception exception = new Exception();
+                }
+                
+                  
+            }
+            return user;
         }
 
         public void Registration(string email, string login, string password)
