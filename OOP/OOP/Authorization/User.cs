@@ -14,6 +14,8 @@ namespace OOP.Authorization
             Login = login;
             Password = password;
         }
+
+        public User() { }
         public string Email
         {
             get;
