@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OOP.Authorization.AuthorizationService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAQAAEEAAA=</HashCode>
+      <FileName>Authorization\AuthorizationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OOP.Authorization.User" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAiAAAQAAAAAAA=</HashCode>
+      <FileName>Authorization\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.Data.DataStorage" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Data\DataStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.Data.Word" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Word.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.NewFormOfQuestions.GrammaQuestion" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>NewFormOfQuestions\GrammaQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.NewFormOfQuestions.InsertQuestion" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>NewFormOfQuestions\InsertQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.NewFormOfQuestions.SentenceQuestion" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAgAAA=</HashCode>
+      <FileName>NewFormOfQuestions\SentenceQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.NewFormOfQuestions.TranslateQuestion" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAwAAAAAAAACAEAACACQAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>NewFormOfQuestions\TranslateQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.Tasks.GrammaTask" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tasks\GrammaTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.Tasks.InsertTask" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Tasks\InsertTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.Tasks.SentenceTask" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAA=</HashCode>
+      <FileName>Tasks\SentenceTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.VoiceService.SpeachRecognition" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VoiceService\SpeachRecognition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP.VoiceService.Voice" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>VoiceService\Voice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OOP.IAuthorization" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAEEAAA=</HashCode>
+      <FileName>Authorization\IAuthorization.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="OOP.Enums.Dificulties" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAMACAAAAAGABAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\Dificulties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="OOP.Enums.TopicTypes" Collapsed="true">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAgAAAAACAAAAAAAA=</HashCode>
+      <FileName>Enums\TopicTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
