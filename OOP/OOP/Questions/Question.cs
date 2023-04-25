@@ -1,4 +1,5 @@
-﻿using System;
+﻿ using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,16 @@ namespace OOP.Questions
     internal class Question : Voice
     {
         public List<string>? question { get; set; }
-        public List<string>? Answer { get; set; }
+      //  public List<string>? Answer { get; set; }
 
-        public List<string>? Words { get; set; }
 
-        public Question(List<string> q, List<string> a, List<string> w)
+        public List<string> Answer { get; set; }
+
+        public Question(List<string> q, List<string> a)
         {
             question = q;
             Answer = a;
-            Words = w;
+           ;
         }
 
         bool CheakAnswer(List<string> answer)

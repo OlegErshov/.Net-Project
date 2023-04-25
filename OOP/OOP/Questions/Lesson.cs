@@ -9,10 +9,15 @@ namespace OOP.Questions
     internal class Lesson
     {
         List<Question>? questions;
-        void AddQuestion(List<string> question, List<string> answer, List<string> words)
+        void AddQuestion(List<string> question, List<string> answer)
         {
-            Question q = new Question(question, answer, words);
+            Question q = new Question(question, answer);
             questions?.Add(q);
+        }
+
+        void addQuestion(Question question)
+        {
+            questions?.Add(question);
         }
 
         void RemoveQuestion(List<string> question)
