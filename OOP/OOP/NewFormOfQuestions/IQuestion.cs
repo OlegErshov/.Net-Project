@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP.NewFormOfQuestions
 {
-    internal interface IQuestion
+    public interface IQuestion
     {
-        
+        public bool Cheak(AnswerTemplate answer);
+
     }
 }
