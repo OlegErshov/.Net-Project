@@ -38,27 +38,6 @@ namespace OOP.Authorization
             }
         }
 
-        public bool EmailValidation(string email)
-        {
-            string pattern = @"([a-zA-Z\d]+@[a-z]+\.[a-z]+)";
-
-            if (!Regex.Match(email, pattern).Success)
-            {
-                return false;
-            }
-            return true;
-
-        }
-
-        public bool PasswordValidation(string password)
-        {
-            string pattern = @"([\\da-zA-Z\\./_])";
-
-            if (!Regex.Match(password, pattern).Success)
-            {
-                return false;
-            }
-            return true;
-        }
+      
     }
 }
