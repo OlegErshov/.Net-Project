@@ -1,4 +1,7 @@
 ﻿using OOP.NewFormOfQuestions;
+
+using OOP.QuestionFabrics;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +12,19 @@ namespace OOP.Tasks
 {
     internal class GrammaTask
     {
-        List<GrammaQuestion> questions { get; set; }    
 
-        void  AddQuestion(string sent,List<string> varinets, List<string> answer)
+        List<IQuestion> questions { get; set; }    
+
+        void  AddQuestion(string sent,List<string> varients, List<string> answer)
         {
-            GrammaQuestion q = new GrammaQuestion(sent, varinets, answer);
-            questions.Add(q);
+            QuestionTemplate ques = new QuestionTemplate();
+            ques.GrammaQuestion(sent,varients,answer);
+            GrammaFabric grammaFabric= new GrammaFabric();
+        
+            questions.Add(grammaFabric.Create(ques));
         }
+
+
 
         void AddQuestion(GrammaQuestion question)
         {

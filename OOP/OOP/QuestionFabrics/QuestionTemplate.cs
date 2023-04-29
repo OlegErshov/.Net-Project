@@ -1,4 +1,7 @@
-﻿using System;
+
+using OOP.NewFormOfQuestions;
+using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +24,20 @@ namespace OOP.QuestionFabrics
         public string? letters { get; set; }
 
         public List<string> _questions { get; set; }
+
+
+        public void GrammaQuestion(string sent, List<string> varinets, List<string> answer)
+        {
+            Sentence = sent;
+            AnswerVarients= varinets;
+            rightAnswer= answer;
+        }
+
+        public void InsertQuestion(string word,string sent)
+        {
+            this.word = word;
+            Sentence= sent;
+        }
 
 
     }
