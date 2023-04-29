@@ -1,5 +1,4 @@
-﻿using OOP.NewFormOfQuestions;
-using OOP.QuestionFabrics;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,7 @@ namespace OOP.Tasks
     internal class InsertTask
     {
         List<string> words { get;set; }
+
         List<IQuestion> questions { get;set; }
 
         public void addQuestion(string sentence,string word)
@@ -23,5 +23,6 @@ namespace OOP.Tasks
         }
 
         
+
     }
 }

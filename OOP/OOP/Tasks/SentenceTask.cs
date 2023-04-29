@@ -16,6 +16,7 @@ namespace OOP.Tasks
         {
 
         }
+
         List<bool> CheakAll(List<string> answers)
         {
             List<bool> result = new List<bool>();
