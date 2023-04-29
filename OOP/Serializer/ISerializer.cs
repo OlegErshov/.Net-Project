@@ -16,6 +16,6 @@ namespace Serializer
         void SerializeJson<T>(IEnumerable<T> collection, string fileName, JsonSerializerOptions? options = null);
         Task SerializeJsonAsync<T>(IEnumerable<T> collection, string fileName, JsonSerializerOptions? options = null);
         void SerializeXml<T>(IEnumerable<T> collection, string fileName);
-        Task SerializeXmlAsync<T>(IEnumerable<T> collection);
+        Task SerializeXmlAsync<T>(IEnumerable<T> collection, string fileName);
     }
 }
