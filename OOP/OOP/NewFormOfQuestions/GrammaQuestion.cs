@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP.NewFormOfQuestions
 {
-    internal class GrammaQuestion
+    internal class GrammaQuestion : IQuestion
     {
         // представляет вопрос вида предложение с пропущенным местом/ами для вставки грамматических конструкций
         public string Sentence { get; set; }
@@ -19,9 +19,11 @@ namespace OOP.NewFormOfQuestions
             rightAnswer= answer;
         }
 
-        public bool Cheak(List<int> indexes)
+
+        public bool Cheak(AnswerTemplate ansTemp)
         {
             List<string> answer = new List<string>();
+            List<int> indexes = ansTemp.IntListAnswer;
 
             foreach (var item in indexes)
             {

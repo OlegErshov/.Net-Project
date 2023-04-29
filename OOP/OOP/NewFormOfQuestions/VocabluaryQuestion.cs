@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP.NewFormOfQuestions
 {
-    internal class VocabluaryQuestion
+
+    internal class VocabluaryQuestion : IQuestion
+
     {
         public string? Text { get; set; } // смысловое предложение
         public string? letters { get; set; } // набор символов из которых состоит нужное слово
@@ -17,8 +19,11 @@ namespace OOP.NewFormOfQuestions
             letters = l;
             answer = a;
         }
-        bool Cheak(string ans)
+
+        public bool Cheak(AnswerTemplate answ)
         {
+            string ans = answ.StringAnswer;
+
             if(ans == answer) return true;
             return false;
         }
