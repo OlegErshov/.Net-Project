@@ -11,6 +11,11 @@ namespace OOP.Tasks
     {
         List<SentenceQuestion> Questions { get; set; }
 
+
+        public void AddQuestion(List<string>? Words,string ans)
+        {
+
+        }
         List<bool> CheakAll(List<string> answers)
         {
             List<bool> result = new List<bool>();

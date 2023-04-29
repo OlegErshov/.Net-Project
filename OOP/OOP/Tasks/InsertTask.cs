@@ -1,4 +1,5 @@
 ﻿using OOP.NewFormOfQuestions;
+using OOP.QuestionFabrics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +11,17 @@ namespace OOP.Tasks
     internal class InsertTask
     {
         List<string> words { get;set; }
-        List<InsertQuestion> questions { get;set; }
+        List<IQuestion> questions { get;set; }
 
         public void addQuestion(string sentence,string word)
         {
-            InsertQuestion q = new InsertQuestion(sentence,word);
+            QuestionTemplate ques = new QuestionTemplate();
+            ques.InsertQuestion(word, sentence);
+            InsertFabric insertFabric = new InsertFabric();
+            questions.Add(insertFabric.Create(ques));
             words.Add(word);
         }
 
-        public bool CheakOneSentence(int questionIndex,int wordIndex)
-        {
-            if (questions[questionIndex].word == words[wordIndex])
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }
