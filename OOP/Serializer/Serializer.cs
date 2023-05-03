@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Serializer
+namespace SerializerLib
 {
     public class Serializer : ISerializer
     {
@@ -19,7 +19,7 @@ namespace Serializer
             {
                 return JsonSerializer.Deserialize<IEnumerable<T>>(fs);
             }
-            
+
         }
 
         public async Task<IEnumerable<T>?> DeserializeJsonAsync<T>(string fileName)

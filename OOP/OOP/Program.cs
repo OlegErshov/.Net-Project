@@ -2,6 +2,7 @@
 using OOP.Authorization;
 using OOP.NewFormOfQuestions;
 using OOP.VoiceService;
+using SerializerLib;
 using SpeechLib;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
@@ -22,7 +23,17 @@ SpeachRecognition recognition = new SpeachRecognition();
 OOP.Validator validator = new OOP.Validator();
 
 User user = new User(email,login,password);
-Console.WriteLine(validator.EmailValidation(user.Email));
+User user1 = new User("sadsda@gmail.com","oleg",password);
+User user2 = new User("tima123@mail.ru","tima",password);   
+
+List<User> users = new List<User>();
+users.Add(user);
+users.Add(user1);
+users.Add(user2);
+Serializer serialize = new Serializer();
+serialize.SerializeJson(users, "users.json");
+
+users = serialize.DeserializeJson<User>("users.json") as List<User>;
 
 
 /*Dictionary<string,string> result = new Dictionary<string, string>();
