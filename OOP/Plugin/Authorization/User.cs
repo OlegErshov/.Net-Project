@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace OOP.Authorization
+namespace Plugin.Authorization
 {
     public class User
     {
@@ -35,6 +35,6 @@ namespace OOP.Authorization
             set;
         }
 
-      
+
     }
 }
