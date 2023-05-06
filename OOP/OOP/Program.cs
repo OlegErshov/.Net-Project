@@ -35,6 +35,11 @@ serialize.SerializeJson(users, "users.json");
 
 users = serialize.DeserializeJson<User>("users.json") as List<User>;
 
+serialize.SerializeXml<User>(users[0], "users.xml");
+
+users[1] = serialize.DeserializeXml<User>("users.xml");
+
+
 
 /*Dictionary<string,string> result = new Dictionary<string, string>();
 result.Add("name","имя");
