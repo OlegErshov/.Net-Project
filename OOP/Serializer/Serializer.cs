@@ -34,7 +34,7 @@ namespace SerializerLib
             }
         }
 
-        public IEnumerable<T>? DeserializeXml<T>(string fileName)
+        public T? DeserializeXml<T>(string fileName)
         {
             if (!File.Exists(fileName))
             {
@@ -43,9 +43,9 @@ namespace SerializerLib
          
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
-                XmlSerializer deserializer = new XmlSerializer(typeof(IEnumerable<T>));
+                XmlSerializer deserializer = new XmlSerializer(typeof(T));
 
-                return (IEnumerable<T>)deserializer.Deserialize(fs);
+                return (T)deserializer.Deserialize(fs);
             }
 
         }
@@ -85,7 +85,7 @@ namespace SerializerLib
             }
         }
 
-        public void SerializeXml<T>(IEnumerable<T> collection, string fileName)
+        public void SerializeXml<T>(T collection, string fileName)
         {
             using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
             {
