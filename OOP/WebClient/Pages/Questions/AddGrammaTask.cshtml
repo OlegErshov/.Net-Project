@@ -6,7 +6,7 @@
 <!--Создаём форму редактирования-->
 <form method="post" class="mt-3">
     <!--Создаём скрытое поле для параметра ID-->
-    <input type="hidden" asp-for="Student.id" />
+    <input type="hidden" asp-for="Student.Id" />
 
     <!--Добавляем поля редактирования-->
    
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="card-footer text-center">
-                    <a asp-page="/Questions/Test" asp-route-id="@Model.Student.id" class="btn-success">добавить задание</a>
+                    <a asp-page="/Questions/Test" asp-route-id="@Model.Student.Id" class="btn-success">добавить задание</a>
                 </div>
 
             </div>

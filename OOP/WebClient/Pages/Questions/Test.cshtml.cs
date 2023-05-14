@@ -11,8 +11,8 @@ namespace WebClient.Pages.Questions
     {
         private ITaskRepository _db { get; set; }
 
-        private IUserRepository _userRepository { get; set; }
-        public TestModel(ITaskRepository db, IUserRepository userRepo)
+        private IRepository<Student> _userRepository { get; set; }
+        public TestModel(ITaskRepository db, IRepository<Student> userRepo)
         {
             _db = db;
             _userRepository = userRepo;

@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace Repository.UserRepository
 {
-    public class FakeUserRepository : IUserRepository
+    public class FakeStudentRepository : IRepository<Student> 
     {
         IEnumerable<Student> _UserList;
 
-        public FakeUserRepository()
+        public FakeStudentRepository()
         {
             _UserList = new List<Student>()
             {
                 new Student()
                 {
-                   id = 0, Email = "olezhka@gmail.com", Login = "SEKS INSTRUCTOR", Password = "1234324"
+                   Id = 0, Email = "olezhka@gmail.com", Login = "SEKS INSTRUCTOR", Password = "1234324"
                 },
 
                 new Student()
                 {
-                   id = 1, Email = "tima@gmail.com", Login = "SEKS INSTRUCTOR IS NATO", Password = "1111"
+                   Id = 1, Email = "tima@gmail.com", Login = "SEKS INSTRUCTOR IS NATO", Password = "1111"
                 },
 
                 new Student()
                 {
-                   id = 2, Email = "Sasha@gmail.com", Login = "Oleg's girlfriend", Password = "qwerty"
+                   Id = 2, Email = "Sasha@gmail.com", Login = "Oleg's girlfriend", Password = "qwerty"
                 }
 
             };
@@ -39,12 +39,12 @@ namespace Repository.UserRepository
 
         public Student GetUserById(int id)
         {
-            return _UserList.FirstOrDefault(x => x.id == id);
+            return _UserList.FirstOrDefault(x => x.Id == id);
         }
 
         public Student Update(Student UpdatedUser)
         {
-            Student user = _UserList.FirstOrDefault(x => x.id == UpdatedUser.id);
+            Student user = _UserList.FirstOrDefault(x => x.Id == UpdatedUser.Id);
             
             if (user != null)
             {
@@ -55,6 +55,11 @@ namespace Repository.UserRepository
             }
 
             return user;
+        }
+
+        public void Add(Student student)
+        {
+            _UserList.ToList().Add(student);
         }
     }
 }

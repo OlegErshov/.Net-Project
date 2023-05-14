@@ -1,3 +1,4 @@
+using Plugin.Authorization;
 using Repository;
 using Repository.UserRepository;
 
@@ -6,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<ITaskRepository, FakeTaskRepository>();
-builder.Services.AddSingleton<IUserRepository, FakeUserRepository>();
+builder.Services.AddSingleton<IRepository<Student>, FakeStudentRepository>();
+builder.Services.AddSingleton<IRepository<Teacher>, FakeTeacherRepository>();
 
 var app = builder.Build();
 

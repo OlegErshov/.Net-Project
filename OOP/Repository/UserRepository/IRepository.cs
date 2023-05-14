@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Repository.UserRepository
 {
-    public interface IUserRepository
+    public interface IRepository<T> where T : User
     {
-        IEnumerable<Student> GetAllUsers();
+        IEnumerable<T> GetAllUsers();
 
-        Student GetUserById(int id);
+        T GetUserById(int id);
 
-        Student Update(Student user);
+        T Update(T user);
+
+        void Add(T user);
     }
 }

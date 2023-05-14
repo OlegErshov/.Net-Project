@@ -2,14 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Plugin.Authorization
 {
-    public class Admin : User
+    public class Teacher : User
     {
-        List<Student> students { get; set; }
+        public List<int> students { get; set; }
+
+        public const string Role = "teacher";
 
        
     }

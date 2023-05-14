@@ -8,8 +8,10 @@ namespace Plugin.Authorization
 {
     public interface IAuthorization
     {
-        void Registration(string email, string loginn, string password);
-        Student Login(string email, string password);
+       User Registration(string email, string loginn, string password);
+       User Login(string email, string password);
         bool Exist(string login);
+
+      
     }
 }

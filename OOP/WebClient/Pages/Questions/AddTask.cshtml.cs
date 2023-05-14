@@ -7,9 +7,9 @@ namespace WebClient.Pages.Questions
 {
     public class AddTaskModel : PageModel
     {
-        private IUserRepository _userRepository;
+        private IRepository<Student> _userRepository;
 
-        public AddTaskModel(IUserRepository userRepo)
+        public AddTaskModel(IRepository<Student> userRepo)
         {
             _userRepository= userRepo;
         }

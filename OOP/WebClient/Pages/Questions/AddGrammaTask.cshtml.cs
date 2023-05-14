@@ -11,9 +11,9 @@ namespace WebClient.Pages.Questions
     public class AddGrammaTaskModel : PageModel
     {
         private ITaskRepository _db;
-        private IUserRepository _userRepository;
+        private IRepository<Student> _userRepository;
 
-        public AddGrammaTaskModel(ITaskRepository db,IUserRepository userRepo)
+        public AddGrammaTaskModel(ITaskRepository db,IRepository<Student> userRepo)
         {
             _db = db;
             _userRepository = userRepo;

@@ -8,9 +8,9 @@ namespace WebClient.Pages.Users
     public class StudentsModel : PageModel
     {
 
-        private IUserRepository _userRepository;
+        private IRepository<Student> _userRepository;
 
-        public StudentsModel(IUserRepository userRepository)
+        public StudentsModel(IRepository<Student> userRepository)
         {
             _userRepository = userRepository;
         }
