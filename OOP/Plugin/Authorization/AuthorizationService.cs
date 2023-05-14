@@ -8,16 +8,16 @@ namespace Plugin.Authorization
 {
     public class AuthorizationService : IAuthorization
     {
-        private List<User> _users = new List<User>();
+        private List<Student> _users = new List<Student>();
         public bool Exist(string email)
         {
             var ex = _users.Any(p => p.Email == email);
             return ex;
         }
 
-        public User Login(string email, string password)
+        public Student Login(string email, string password)
         {
-            User user = new User();
+            Student user = new Student();
             if (Exist(email))
             {
                 var us = _users.Find(p => p.Email == email);
@@ -40,7 +40,7 @@ namespace Plugin.Authorization
         {
             if (!Exist(email))
             {
-                _users.Add(new User(email, login, password));
+                _users.Add(new Student(email, login, password));
             }
             else
             {

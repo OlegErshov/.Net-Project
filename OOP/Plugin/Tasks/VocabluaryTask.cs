@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
-    internal class VocabluaryTask
+    public class VocabluaryTask
     {
         public List<VocabluaryQuestion> questions { get; set; }
 

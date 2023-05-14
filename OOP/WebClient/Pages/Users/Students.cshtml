@@ -1,0 +1,36 @@
+﻿@page
+@model WebClient.Pages.Users.StudentsModel
+@{
+    ViewData["Title"] = "User Account";
+}
+
+
+<div class="row">
+    @foreach (var item in Model.Users)
+    {
+        <div class="col-12 col-sm-6 col-lg-3">
+         
+            <div class="card-deck">
+                <div class="card m-3">
+
+                    <div class="card-header text-center" >
+                        <h5>Login : @item.Login </h5>
+                    </div>
+
+                    <div class="card-body text-center">
+
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <a asp-page="/Questions/AddTask" asp-route-id="@item.id" class="btn-success">Добавить заданий</a>
+                        <a asp-page="/Questions/Test" asp-route-id ="@item.id" class="btn-danger">Список заданий</a>
+                    </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    }
+
+</div>

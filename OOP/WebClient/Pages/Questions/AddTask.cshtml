@@ -1,0 +1,19 @@
+﻿@page
+@model WebClient.Pages.Questions.AddTaskModel
+@{
+}
+
+<div class="">
+    <div class="row">
+        <a asp-page="/Questions/AddGrammaTask" asp-route-id="@Model.User.id" class="btn-success">Add gramma task</a>
+    </div>
+    <div class="row">
+        <a asp-page="/Questions/AddSentenceTask" asp-route-id="@Model.User.id" class="btn-success">Add sentence task</a>
+    </div>
+    <div class="row">
+        <a asp-page="/Questions/AddInsertTask" asp-route-id="@Model.User.id" class="btn-success">Add insert task</a>
+    </div>
+    <div class="row">
+        <a asp-page="/Questions/AddVocabluaryTask" asp-route-id="@Model.User.id" class="btn-success">Add vocabluary task</a>
+    </div>
+</div>

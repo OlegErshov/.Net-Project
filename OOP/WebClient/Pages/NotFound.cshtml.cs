@@ -1,14 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebClient.Pages.Registration
+namespace WebClient.Pages
 {
-    public class RegistrationModel : PageModel
+    public class NotFoundModel : PageModel
     {
         public void OnGet()
         {
         }
-
-        
     }
 }

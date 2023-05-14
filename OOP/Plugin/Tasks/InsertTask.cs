@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
-    internal class InsertTask
+    public class InsertTask
     {
         List<string> words { get; set; }
 

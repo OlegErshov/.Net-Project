@@ -1,0 +1,42 @@
+﻿@page
+@model WebClient.Pages.Questions.TestModel
+@{
+}
+
+<div class="row">
+    
+    @foreach (var item in Model.user.homeWork._GrammaList)
+    {
+        <div class ="col-12 col-sm-6 col-lg-4">
+            <div class="card-deck">
+                <div class="card m-3">
+                    <div class="card-header text-center">
+                        <h3>Грамматика</h3>
+                    </div>
+
+                    <div class="card-body text-center">
+                        @foreach(var ob in item.questions){
+                            <h5>@ob.Sentence</h5>
+                          
+                            @foreach(var word in ob.AnswerVarients)
+                            {
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">@word</label>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn-success">Проверить</a>
+                        <a href="#" class="btn-danger">Удалить</a>
+                    </div>
+
+                   </div>
+               </div>
+           </div>
+
+        
+    }
+</div>

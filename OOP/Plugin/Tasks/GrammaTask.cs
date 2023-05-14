@@ -11,15 +11,22 @@ namespace Plugin.Tasks
     public class GrammaTask
     {
 
-        List<IQuestion> questions { get; set; }
+        public List<GrammaQuestion>? questions { get; set; }
+        public GrammaTask() {
+            questions = new List<GrammaQuestion>();
+        }
 
-        void AddQuestion(string sent, List<string> varients, List<string> answer)
+        public void AddQuestion(string sent, List<string> varients, List<string> answer)
         {
-            QuestionTemplate ques = new QuestionTemplate();
-            ques.GrammaQuestion(sent, varients, answer);
-            GrammaFabric grammaFabric = new GrammaFabric();
+           //QuestionTemplate ques = new QuestionTemplate();
+            //ques.GrammaQuestion(sent, varients, answer);
+          //  GrammaFabric grammaFabric = new GrammaFabric();
 
-            questions.Add(grammaFabric.Create(ques));
+            GrammaQuestion gr = new GrammaQuestion(sent, varients, answer);
+            if(questions == null) { 
+                questions = new List<GrammaQuestion>();
+            }
+            questions?.Add(gr);
         }
 
 

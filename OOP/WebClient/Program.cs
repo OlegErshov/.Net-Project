@@ -1,7 +1,12 @@
+using Repository;
+using Repository.UserRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<ITaskRepository, FakeTaskRepository>();
+builder.Services.AddSingleton<IUserRepository, FakeUserRepository>();
 
 var app = builder.Build();
 
