@@ -28,7 +28,7 @@ namespace WebClient.Pages.Registration
         public string Password { get; set; }
         
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(string Email, string Login, string Password)
         {
             if (authorizationService.Exist(Login)){
                 return RedirectToPage("Registration/Login");
@@ -38,7 +38,7 @@ namespace WebClient.Pages.Registration
                 int id = _studentsRepository.GetAllUsers().Max(x => x.Id) + 1;
                 Student st = new Student(Email,Login,Password,id);
                 _studentsRepository.Add(st);
-                return RedirectToPage("Users/UserPage", id);
+                return RedirectToPage("/Users/UserPage", id);
             }
 
         }

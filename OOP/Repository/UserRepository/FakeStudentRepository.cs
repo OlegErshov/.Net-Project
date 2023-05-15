@@ -9,7 +9,7 @@ namespace Repository.UserRepository
 {
     public class FakeStudentRepository : IRepository<Student> 
     {
-        IEnumerable<Student> _UserList;
+        List<Student> _UserList;
 
         public FakeStudentRepository()
         {
@@ -59,7 +59,7 @@ namespace Repository.UserRepository
 
         public void Add(Student student)
         {
-            _UserList.ToList().Add(student);
+            _UserList.Add(student);
         }
     }
 }

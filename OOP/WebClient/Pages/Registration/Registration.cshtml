@@ -1,33 +1,36 @@
-﻿@page
+﻿
+@page
 @model WebClient.Pages.Registration.RegistrationModel
 @{
 }
 
-<div class="row">
-    <div class="card-deck">
+<form method="post">
+    <div class="row">
+        <div class="card-deck">
 
-        <div class="card-header">
-            <label>Regictration</label>
-        </div>
+            <div class="card-header">
+                <label>Regictration</label>
+            </div>
 
-        <div class="card-body">
-            <input asp-for="Login" placeholder="Enter your login" m-3/>
-            <input asp-for="Email" placeholder="Enter your email"/>
-            <input asp-for="Password" placeholder="Enter your password"/>
-        </div>
+            <div class="card-body">
+                <input asp-for="Login" placeholder="Enter your login" m-3 />
+                <input asp-for="Email" placeholder="Enter your email" />
+                <input asp-for="Password" placeholder="Enter your password" />
+            </div>
 
-        <div class="card-footer" >
-            <form method="post">
+            <div class="card-footer">
+                
                 <button type="submit" class="btn btn-success ">Зарегистрироваться</button>
-            </form>
-            
+                
+            </div>
         </div>
+
     </div>
-        
-</div>
+</form>
+
 
 <div class="container signin">
-    <p>Already have an account? <a asp-page="Registration/LogIn">Sign in</a>.</p>
-    <p>Enter like teacher <a asp-page="Registration/LogIn">Enter</a>.</p>
+    <p>Already have an account? <a asp-page="/Registration/StudentsSignIn">Sign in</a>.</p>
+    <p>Enter like teacher <a asp-page="/Registration/StudentsSignIn">Enter</a>.</p>
 
 </div>

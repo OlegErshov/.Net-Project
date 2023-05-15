@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Authorization
 {
-    public class AuthorizationService : IAuthorization
+    public class AuthorizationService : IAuthorization<Student>
     {
         IRepository<Student> _repository;
 
@@ -21,12 +21,19 @@ namespace Plugin.Authorization
             return _repository.GetAllUsers().Any(x => x.Login == login);
         }
 
-        public User Login(string email, string password)
+        public Student Login(string login, string password)
         {
-            throw new NotImplementedException();
+            Student user = _repository.GetAllUsers().FirstOrDefault(x => x.Login == login);
+            if(user.Password == password) {
+                return user;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public User Registration(string email, string loginn, string password)
+        public Student Registration(string email, string loginn, string password)
         {
             throw new NotImplementedException();
         }

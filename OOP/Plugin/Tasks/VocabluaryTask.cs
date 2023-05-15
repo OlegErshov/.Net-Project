@@ -9,7 +9,8 @@ namespace Plugin.Tasks
 {
     public class VocabluaryTask
     {
-        public List<VocabluaryQuestion> questions { get; set; }
+        public List<VocabluaryQuestion> questions { get; set; } = new List<VocabluaryQuestion>();
+        
 
         void AddQuestion(string text, string letters, string answer)
         {

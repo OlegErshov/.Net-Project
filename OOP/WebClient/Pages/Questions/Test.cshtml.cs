@@ -18,15 +18,15 @@ namespace WebClient.Pages.Questions
             _userRepository = userRepo;
         }
 
-        public Student user { get; set; }
+        public Student Student { get; set; }
 
       
         public IActionResult OnGet(int id)
         {
             
-            user = _userRepository.GetUserById(id);
+            Student = _userRepository.GetUserById(id);
 
-            if(user == null || user.homeWork._GrammaList == null) {
+            if(Student == null || Student.homeWork._GrammaList == null) {
                 return RedirectToPage("/NotFound");
             }
             return Page();

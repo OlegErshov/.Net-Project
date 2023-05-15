@@ -2,3 +2,30 @@
 @model WebClient.Pages.Registration.StudentsSignInModel
 @{
 }
+
+<div class="row">
+    <label>МЫ СКУЧАЛИ</label>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="card-deck">
+
+            <div class="card-header">
+                <label>Regictration</label>
+            </div>
+
+            <div class="card-body">
+                <input asp-for="Login" placeholder="Enter your login" m-3 />
+                <input asp-for="Password" placeholder="Enter your password" />
+            </div>
+
+            <div class="card-footer">
+
+                <button type="submit" class="btn btn-success ">Войти</button>
+
+            </div>
+        </div>
+
+    </div>
+</form>
