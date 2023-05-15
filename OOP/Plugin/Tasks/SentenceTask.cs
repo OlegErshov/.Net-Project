@@ -9,21 +9,21 @@ namespace Plugin.Tasks
 {
     public class SentenceTask
     {
-        List<SentenceQuestion> Questions { get; set; }
+        public List<SentenceQuestion> questions { get; set; } = new List<SentenceQuestion>();
 
 
 
         public void AddQuestion(List<string>? Words, string ans)
         {
-
+            questions.Add(new SentenceQuestion(Words, ans));
         }
 
         List<bool> CheakAll(List<string> answers)
         {
             List<bool> result = new List<bool>();
-            for (int i = 0; i < Questions.Count; i++)
+            for (int i = 0; i < questions.Count; i++)
             {
-                if (Questions[i].Answer == answers[i])
+                if (questions[i].Answer == answers[i])
                 {
                     result.Add(true);
                 }

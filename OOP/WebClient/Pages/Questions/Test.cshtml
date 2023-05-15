@@ -82,4 +82,49 @@
 
 
     }
+
+    @foreach (var item in Model.Student.homeWork._SentenceList)
+    {
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card-deck">
+                <div class="card m-3">
+                    <div class="card-header text-center">
+                        <h3>Грамматика</h3>
+
+                        <div class="col">
+                            <label>Составьте предложения</label>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card-body text-center">
+                        @foreach (var ob in item.questions)
+                        {
+                            <div class="col">
+                                
+                                
+                                    <div class="col text-center">
+                                        @foreach (var words in ob.Words)
+                                        {
+                                            <label>@words /</label>
+                                        }
+                                    </div>
+                                
+                            </div>
+
+
+                        }
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn-success">Проверить</a>
+                        <a href="#" class="btn-danger">Удалить</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    }
 </div>

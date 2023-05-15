@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Questions
 {
-    internal class SentenceQuestion : IQuestion
+    public class SentenceQuestion : IQuestion
     {
         // вопрос для граммаики, приведен список слов основных и нужно добавить грам структуры для формирования предложения
         public List<string>? Words { get; set; }
