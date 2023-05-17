@@ -1,3 +1,4 @@
+using Application.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -10,13 +11,11 @@ namespace WebClient.Pages.Questions
 {
     public class AddGrammaTaskModel : PageModel
     {
-        private ITaskRepository _db;
-        private IRepository<Student> _userRepository;
+        private IStudentService _studentService;
 
-        public AddGrammaTaskModel(ITaskRepository db,IRepository<Student> userRepo)
+        public AddGrammaTaskModel(IStudentService userRepo)
         {
-            _db = db;
-            _userRepository = userRepo;
+            _studentService= userRepo;
         }
 
         [BindProperty]
@@ -24,13 +23,13 @@ namespace WebClient.Pages.Questions
         public void OnGet(int id)
         {
             
-            Student = _userRepository.GetUserById(id);
+            Student = _studentService.GetByIdAsync(id).Result;
             if(Student.homeWork._GrammaList.Count == 0 || Student.homeWork._GrammaList.Last().questions == null)
             {
                 Student.homeWork._GrammaList.Add(new GrammaTask());
             }
-          
-            _userRepository.Update(Student);
+
+            _studentService.UpdateAsync(Student);
         }
 
         public string Sentence { get; set; }
@@ -40,10 +39,10 @@ namespace WebClient.Pages.Questions
         {
             List<string> varients = answerVarients.Split(' ').ToList();
             List<string> rightAns = rightAnswer.Split(' ').ToList();
-            
-            Student = _userRepository.GetUserById(id);
+
+            Student = _studentService.GetByIdAsync(id).Result;
             Student.homeWork._GrammaList.Last().AddQuestion(sentence, varients, rightAns);
-            _userRepository.Update(Student);
+            _studentService.UpdateAsync(Student);
 
             return Page();
         }

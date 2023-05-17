@@ -1,3 +1,4 @@
+using Application.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -9,32 +10,32 @@ namespace WebClient.Pages.Questions
 {
     public class AddInsertTaskModel : PageModel
     {
-        private IRepository<Student> _studentRepository;
-        public AddInsertTaskModel(IRepository<Student> repo)
+        private IStudentService _studentService;
+        public AddInsertTaskModel(IStudentService repo)
         {
-                _studentRepository = repo;
+                _studentService = repo;
 
         }
 
         public Student Student { get; set; }
         public void OnGet(int id)
         {
-            Student = _studentRepository.GetUserById(id);
+            Student = _studentService.GetByIdAsync(id).Result;
             if (Student.homeWork._InsertList.Count == 0 || Student.homeWork._InsertList.Last().questions == null)
             {
                 Student.homeWork._InsertList.Add(new InsertTask());
             }
 
-            _studentRepository.Update(Student);
+            _studentService.UpdateAsync(Student);
         }
 
         public string Sentence { get; set; }
         public string Word { get; set; }
         public IActionResult OnPostTest(int id)
         {
-            Student = _studentRepository.GetUserById(id);
+            Student = _studentService.GetByIdAsync(id).Result;
             Student.homeWork._InsertList.Last().addQuestion(Sentence,Word);
-            _studentRepository.Update(Student);
+            _studentService.UpdateAsync(Student);
 
             return Page();
         }
