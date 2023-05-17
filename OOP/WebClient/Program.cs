@@ -1,8 +1,34 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 using Plugin.Authorization;
 using Repository;
 using Repository.UserRepository;
 
+using Repository.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+#region DB & Identity
+
+var connString = builder.Configuration.GetConnectionString("SqLiteConnection");
+builder.Services.AddDbContext<AppDbContext>(opt =>
+                                opt.UseSqlite(connString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options=>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase= false;
+    options.Password.RequireUppercase= false;
+    options.Password.RequiredLength = 6;
+    
+}).AddEntityFrameworkStores<AppDbContext>();
+
+#endregion
+
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

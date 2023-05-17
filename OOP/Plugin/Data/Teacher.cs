@@ -1,4 +1,5 @@
 ﻿using Plugin.QuestionsFabrics;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace Plugin.Authorization
 {
     public class Teacher : User
     {
-        public List<int> students { get; set; }
+       
+        public List<Student> students { get; set; }
 
         public const string Role = "teacher";
 

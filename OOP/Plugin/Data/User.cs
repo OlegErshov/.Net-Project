@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Plugin.Authorization
         
 
         public string Login { get; set; }
-
+      
         public int Id { get; set; }
 
         public string Email { get; set; }   

@@ -10,9 +10,9 @@ namespace Plugin.Tasks
 {
     public class InsertTask
     {
-        List<string> words { get; set; }
+        public List<string> words { get; set; }
 
-        List<IQuestion> questions { get; set; }
+        public  List<IQuestion> questions { get; set; }
 
         public void addQuestion(string sentence, string word)
         {

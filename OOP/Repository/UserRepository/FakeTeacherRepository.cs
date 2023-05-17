@@ -11,21 +11,21 @@ namespace Repository.UserRepository
     public class FakeTeacherRepository : IRepository<Teacher>
     {
         IEnumerable<Teacher> _TeachersList;
-        public FakeTeacherRepository()
-        {
-            _TeachersList = new List<Teacher>()
-            {
-                new Teacher()
-                {
-                    students = new List<int>(){0,2},
-                    Id = 0,
+        //public FakeTeacherRepository()
+        //{
+        //    _TeachersList = new List<Teacher>()
+        //    {
+        //        new Teacher()
+        //        {
+        //            students = new List<Student>(){0,2},
+        //            Id = 0,
                    
-                    Login = "Sasha",
-                    Email = "sasha@gmail.com",
-                    Password = "1111"
-                }
-            };
-        }
+        //            Login = "Sasha",
+        //            Email = "sasha@gmail.com",
+        //            Password = "1111"
+        //        }
+        //    };
+        //}
         public IEnumerable<Teacher> GetAllUsers()
         {
             throw new NotImplementedException();
