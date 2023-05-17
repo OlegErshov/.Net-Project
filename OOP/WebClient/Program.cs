@@ -6,6 +6,8 @@ using Repository;
 using Repository.UserRepository;
 
 using Repository.Data;
+using Repository.UnitOfWork;
+using Application.Abstractions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,8 +35,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options=>
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<ITaskRepository, FakeTaskRepository>();
-builder.Services.AddSingleton<IRepository<Student>, FakeStudentRepository>();
-builder.Services.AddSingleton<IRepository<Teacher>, FakeTeacherRepository>();
+builder.Services.AddSingleton<IUnitOfWork, EfUnitOfWork>();
+builder.Services.AddSingleton<IStudentService, PositionService>();
+builder.Services.AddSingleton<IPositionResponsibilityService, PositionResponsibilityService>();
 
 var app = builder.Build();
 
