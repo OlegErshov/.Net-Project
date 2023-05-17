@@ -1,3 +1,5 @@
+using Application.Abstractions;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -10,16 +12,16 @@ namespace WebClient.Pages.Users
     {
         private Student User { get; set; }
 
-        private IRepository<Student> _userRepository { get; set; }
+        private IStudentService _studentService;
 
-        public UserModel(IRepository<Student> userRepository)
+        public UserModel( IStudentService studentService)
         {
-            _userRepository = userRepository;
+            _studentService = studentService;
         }
 
         public void OnGet(int id)
         {
-            User = _userRepository.GetUserById(id);
+            User = _studentService.GetByIdAsync(id).Result;
         }
     }
 }

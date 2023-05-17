@@ -1,3 +1,4 @@
+using Application.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -9,13 +10,10 @@ namespace WebClient.Pages.Questions
 {
     public class TestModel : PageModel
     {
-        private ITaskRepository _db { get; set; }
-
-        private IRepository<Student> _userRepository { get; set; }
-        public TestModel(ITaskRepository db, IRepository<Student> userRepo)
+        private IStudentService _studentService;
+        public TestModel(IStudentService service)
         {
-            _db = db;
-            _userRepository = userRepo;
+            _studentService = service;
         }
 
         public Student Student { get; set; }
@@ -24,7 +22,7 @@ namespace WebClient.Pages.Questions
         public IActionResult OnGet(int id)
         {
             
-            Student = _userRepository.GetUserById(id);
+            Student = _studentService.GetByIdAsync(id).Result;
 
             if(Student == null || Student.homeWork._GrammaList == null) {
                 return RedirectToPage("/NotFound");

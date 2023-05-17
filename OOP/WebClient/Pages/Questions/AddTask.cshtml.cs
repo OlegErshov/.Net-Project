@@ -1,3 +1,4 @@
+using Application.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -7,18 +8,18 @@ namespace WebClient.Pages.Questions
 {
     public class AddTaskModel : PageModel
     {
-        private IRepository<Student> _userRepository;
+        private IStudentService _studentService;
 
-        public AddTaskModel(IRepository<Student> userRepo)
+        public AddTaskModel(IStudentService userRepo)
         {
-            _userRepository= userRepo;
+            _studentService = userRepo;
         }
 
         [BindProperty]
         public Student User { get; set; }
         public void OnGet(int id)
         {
-            User = _userRepository.GetUserById(id);
+            User = _studentService.GetByIdAsync(id).Result;
         }
     }
 }
