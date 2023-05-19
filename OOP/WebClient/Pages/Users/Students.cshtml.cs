@@ -2,7 +2,7 @@ using Application.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
-using Repository.UserRepository;
+
 
 namespace WebClient.Pages.Users
 {

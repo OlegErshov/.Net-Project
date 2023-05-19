@@ -14,9 +14,10 @@ namespace Repository.Repositories.QuestionsRepositories
     {
         protected AppDbContext _context;
         protected readonly DbSet<T> _entities;
-        public EfQuestionRepository()
+        public EfQuestionRepository(AppDbContext context)
         {
-
+            _context = context;
+            _entities = context.Set<T>();    
         }
         public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
         {

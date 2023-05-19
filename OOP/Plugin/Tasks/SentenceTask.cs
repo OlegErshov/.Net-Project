@@ -21,14 +21,14 @@ namespace Plugin.Tasks
             List<bool> result = new List<bool>();
             for (int i = 0; i < questions.Count; i++)
             {
-                if (questions[i].Answer == answers[i])
-                {
-                    result.Add(true);
-                }
-                else
-                {
-                    result.Add(false);
-                }
+                //if (questions[i].Answer == answers[i])
+                //{
+                //    result.Add(true);
+                //}
+                //else
+                //{
+                //    result.Add(false);
+                //}
             }
             return result;
         }
