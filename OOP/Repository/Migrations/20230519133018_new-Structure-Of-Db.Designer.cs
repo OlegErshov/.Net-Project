@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Data;
 
@@ -10,12 +11,25 @@ using Repository.Data;
 namespace Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519133018_new-Structure-Of-Db")]
+    partial class newStructureOfDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+
+            modelBuilder.Entity("Plugin.Authorization.HomeWork", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeWork");
+                });
 
             modelBuilder.Entity("Plugin.Authorization.Student", b =>
                 {
@@ -24,6 +38,10 @@ namespace Repository.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HomeworkPath")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -38,9 +56,14 @@ namespace Repository.Migrations
                     b.Property<int?>("TeacherId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("homeWorkId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TeacherId");
+
+                    b.HasIndex("homeWorkId");
 
                     b.ToTable("Students");
                 });
@@ -168,10 +191,15 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("HomeWorkId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("StudentId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HomeWorkId");
 
                     b.HasIndex("StudentId");
 
@@ -184,6 +212,9 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("HomeWorkId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("StudentId")
                         .HasColumnType("INTEGER");
 
@@ -192,6 +223,8 @@ namespace Repository.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HomeWorkId");
 
                     b.HasIndex("StudentId");
 
@@ -204,10 +237,15 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("HomeWorkId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("StudentId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HomeWorkId");
 
                     b.HasIndex("StudentId");
 
@@ -220,10 +258,15 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("HomeWorkId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("StudentId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HomeWorkId");
 
                     b.HasIndex("StudentId");
 
@@ -235,6 +278,14 @@ namespace Repository.Migrations
                     b.HasOne("Plugin.Authorization.Teacher", null)
                         .WithMany("students")
                         .HasForeignKey("TeacherId");
+
+                    b.HasOne("Plugin.Authorization.HomeWork", "homeWork")
+                        .WithMany()
+                        .HasForeignKey("homeWorkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("homeWork");
                 });
 
             modelBuilder.Entity("Plugin.Questions.GrammaQuestion", b =>
@@ -267,6 +318,10 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Plugin.Tasks.GrammaTask", b =>
                 {
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
+                        .WithMany("_GrammaList")
+                        .HasForeignKey("HomeWorkId");
+
                     b.HasOne("Plugin.Authorization.Student", null)
                         .WithMany("_GrammaList")
                         .HasForeignKey("StudentId");
@@ -274,6 +329,10 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Plugin.Tasks.InsertTask", b =>
                 {
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
+                        .WithMany("_InsertList")
+                        .HasForeignKey("HomeWorkId");
+
                     b.HasOne("Plugin.Authorization.Student", null)
                         .WithMany("_InsertList")
                         .HasForeignKey("StudentId");
@@ -281,6 +340,10 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Plugin.Tasks.SentenceTask", b =>
                 {
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
+                        .WithMany("_SentenceList")
+                        .HasForeignKey("HomeWorkId");
+
                     b.HasOne("Plugin.Authorization.Student", null)
                         .WithMany("_SentenceList")
                         .HasForeignKey("StudentId");
@@ -288,9 +351,24 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Plugin.Tasks.VocabluaryTask", b =>
                 {
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
+                        .WithMany("_VocabluaryList")
+                        .HasForeignKey("HomeWorkId");
+
                     b.HasOne("Plugin.Authorization.Student", null)
                         .WithMany("_VocabluaryList")
                         .HasForeignKey("StudentId");
+                });
+
+            modelBuilder.Entity("Plugin.Authorization.HomeWork", b =>
+                {
+                    b.Navigation("_GrammaList");
+
+                    b.Navigation("_InsertList");
+
+                    b.Navigation("_SentenceList");
+
+                    b.Navigation("_VocabluaryList");
                 });
 
             modelBuilder.Entity("Plugin.Authorization.Student", b =>

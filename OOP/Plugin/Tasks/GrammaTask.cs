@@ -1,5 +1,6 @@
 ﻿using Plugin.Questions;
 using Plugin.QuestionsFabrics;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
-    public class GrammaTask
+    public class GrammaTask : TaskTemplate<GrammaQuestion>
     {
-
-        public List<GrammaQuestion>? questions { get; set; }
+        
+        
         public GrammaTask() {
             questions = new List<GrammaQuestion>();
         }
 
-        public void AddQuestion(string sent, List<string> varients, List<string> answer)
+        public void AddQuestion(string sent, string varients, string answer)
         {
            //QuestionTemplate ques = new QuestionTemplate();
             //ques.GrammaQuestion(sent, varients, answer);

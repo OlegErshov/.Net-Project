@@ -11,7 +11,7 @@ namespace Plugin.QuestionsFabrics
     {
         public IQuestion Create(QuestionTemplate question)
         {
-            SentenceQuestion q = new SentenceQuestion(question.Words, question.Answer);
+            SentenceQuestion q = new SentenceQuestion();
             return q;
         }
     }

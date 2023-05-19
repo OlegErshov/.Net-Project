@@ -21,9 +21,9 @@ namespace WebClient.Pages.Questions
         public void OnGet(int id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
-            if (Student.homeWork._InsertList.Count == 0 || Student.homeWork._InsertList.Last().questions == null)
+            if (Student._InsertList.Count == 0 || Student._InsertList.Last().questions == null)
             {
-                Student.homeWork._InsertList.Add(new InsertTask());
+                Student._InsertList.Add(new InsertTask());
             }
 
             _studentService.UpdateAsync(Student);
@@ -34,7 +34,7 @@ namespace WebClient.Pages.Questions
         public IActionResult OnPostTest(int id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
-            Student.homeWork._InsertList.Last().addQuestion(Sentence,Word);
+            Student._InsertList.Last().addQuestion(Sentence,Word);
             _studentService.UpdateAsync(Student);
 
             return Page();

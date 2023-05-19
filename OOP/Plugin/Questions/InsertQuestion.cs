@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Plugin.Questions
 {
-    public class InsertQuestion : IQuestion
+    public class InsertQuestion : AnswerTemplate
     {
         // вопрос предназначенный для вставки подходящего по смыслу из списка, который хрнаится в задании такого типа
-        public string? word { get; set; }
-        public string? sentence { get; set; }
+        
+       
+        
+        public string? Sentence { get; set; }
 
-        public InsertQuestion(string? word, string? sentence)
+        public InsertQuestion(string answer, string? sentence)
         {
-            this.word = word;
-            this.sentence = sentence;
+            StringAnswer = answer;
+            this.Sentence = sentence;
         }
 
         public bool Cheak(AnswerTemplate ans)

@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace Plugin.Questions
 {
-    public class SentenceQuestion : IQuestion
+    public class SentenceQuestion : AnswerTemplate
     {
         // вопрос для граммаики, приведен список слов основных и нужно добавить грам структуры для формирования предложения
-        public List<string>? Words { get; set; }
+        
+        public string Words { get; set; }
 
-        public string? Answer { get; set; }
+        
 
-        public SentenceQuestion(List<string> words, string answer)
+        public SentenceQuestion(string words, string answer)
         {
             Words = words;
-            Answer = answer;
+            StringAnswer = answer;
+        }
+
+        public SentenceQuestion()
+        {
+
         }
 
         public bool Cheak(AnswerTemplate ans)

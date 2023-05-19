@@ -1,4 +1,5 @@
 ﻿using Plugin.Questions;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
-    public class VocabluaryTask
+    public class VocabluaryTask : TaskTemplate<VocabluaryQuestion>
     {
-        public List<VocabluaryQuestion> questions { get; set; } = new List<VocabluaryQuestion>();
-        
 
         void AddQuestion(string text, string letters, string answer)
         {

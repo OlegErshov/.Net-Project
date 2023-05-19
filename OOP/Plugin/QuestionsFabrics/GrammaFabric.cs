@@ -11,7 +11,7 @@ namespace Plugin.QuestionsFabrics
     {
         public IQuestion Create(QuestionTemplate question)
         {
-            GrammaQuestion q = new GrammaQuestion(question.Sentence, question.AnswerVarients, question.rightAnswer);
+            GrammaQuestion q = new GrammaQuestion();
             return q;
         }
     }

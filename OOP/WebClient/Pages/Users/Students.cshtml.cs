@@ -14,6 +14,7 @@ namespace WebClient.Pages.Users
         public StudentsModel( IStudentService studentService)
         {
             _studentService = studentService;
+            
         }
     
         public IEnumerable<Student> Users { get; private set; }

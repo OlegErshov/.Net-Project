@@ -1,4 +1,5 @@
 ﻿using Plugin.Questions;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
-    public class SentenceTask
+    public class SentenceTask : TaskTemplate<SentenceQuestion>
     {
-        public List<SentenceQuestion> questions { get; set; } = new List<SentenceQuestion>();
-
-
-
+        
         public void AddQuestion(List<string>? Words, string ans)
         {
-            questions.Add(new SentenceQuestion(Words, ans));
+            questions.Add(new SentenceQuestion());
         }
 
         List<bool> CheakAll(List<string> answers)

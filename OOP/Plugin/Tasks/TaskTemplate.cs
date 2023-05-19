@@ -1,17 +1,17 @@
-﻿using SQLite;
+﻿using Plugin.Questions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plugin.Questions
+namespace Plugin.Tasks
 {
-    public class AnswerTemplate
+    public class TaskTemplate <T> where T : AnswerTemplate
     {
-        public string StringAnswer { get; set; }
-        [AutoIncrement]
         public int Id { get; set; }
+
+        public List<T> questions { get; set; }
 
     }
 }

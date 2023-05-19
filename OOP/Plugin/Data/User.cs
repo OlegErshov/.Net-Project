@@ -12,7 +12,8 @@ namespace Plugin.Authorization
         
 
         public string Login { get; set; }
-      
+
+        [AutoIncrement]
         public int Id { get; set; }
 
         public string Email { get; set; }   

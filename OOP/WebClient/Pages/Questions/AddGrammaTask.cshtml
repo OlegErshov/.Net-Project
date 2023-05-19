@@ -70,7 +70,7 @@
 
                 <div class="card-body text-center">
                     
-                    @foreach (var item in Model.Student.homeWork._GrammaList.Last().questions)
+                    @foreach (var item in Model.Student._GrammaList.Last().questions)
                     {
                         <div class="row text-center">
                             <label>@item.Sentence</label>
@@ -78,7 +78,7 @@
                         
 
                         <div class="row text-center">
-                            @foreach (var word in item.AnswerVarients)
+                            @foreach (var word in Model.Varients)
                             {
 
                                 <div class="col">
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="card-footer text-center">
-                    <a asp-page="/Questions/Test" asp-route-id="@Model.Student.Id" class="btn-success">добавить задание</a>
+                    <button type="submit" asp-page-handler="AddTask" class="btn btn-success ">Добавить задание</button>
                 </div>
 
             </div>

@@ -6,6 +6,7 @@ using Plugin.Questions;
 using Plugin.Tasks;
 using Repository;
 using Repository.UserRepository;
+using SerializerLib;
 
 namespace WebClient.Pages.Questions
 {
@@ -13,9 +14,11 @@ namespace WebClient.Pages.Questions
     {
         private IStudentService _studentService;
 
+        Serializer serializer = new Serializer();
         public AddGrammaTaskModel(IStudentService userRepo)
         {
             _studentService= userRepo;
+          
         }
 
         [BindProperty]
@@ -24,27 +27,79 @@ namespace WebClient.Pages.Questions
         {
             
             Student = _studentService.GetByIdAsync(id).Result;
-            if(Student.homeWork._GrammaList.Count == 0 || Student.homeWork._GrammaList.Last().questions == null)
+            if(Student._GrammaList.Count == 0 || Student._GrammaList.Last().questions == null)
             {
-                Student.homeWork._GrammaList.Add(new GrammaTask());
+                Student._GrammaList.Add(new GrammaTask());
             }
-
-            _studentService.UpdateAsync(Student);
         }
+
+        public List<string> Varients { get; set; }
+        public List<string> Answers { get; set; }
 
         public string Sentence { get; set; }
         public string AnswerVarients { get; set; }
         public string RightAnswer { get; set; }
-        public IActionResult OnPost(string sentence, string answerVarients, string rightAnswer, GrammaTask task,int id)
+
+        public  IActionResult OnPostAddTask(int id)
         {
-            List<string> varients = answerVarients.Split(' ').ToList();
-            List<string> rightAns = rightAnswer.Split(' ').ToList();
+            Student =  _studentService.GetByIdAsync(id).Result;
+
+            deserialization(); 
+            
+            Student._GrammaList.Add(new GrammaTask());
+            Student._GrammaList.Last().questions = new List<GrammaQuestion>();
+
+            serialization();
+
+            return RedirectToPage("Test",Student.Id);
+        }
+        public void OnPost(string sentence, string answerVarients, string rightAnswer,int id)
+        {
 
             Student = _studentService.GetByIdAsync(id).Result;
-            Student.homeWork._GrammaList.Last().AddQuestion(sentence, varients, rightAns);
-            _studentService.UpdateAsync(Student);
+            deserialization();
 
-            return Page();
+            if (Student._GrammaList.Count == 0)
+            {
+                Student._GrammaList.Add(new GrammaTask());
+            }
+            Student._GrammaList.Last().AddQuestion(sentence, answerVarients, rightAnswer);
+
+            serialization();
+
+            _studentService.UpdateAsync(Student);
+            _studentService.SaveChangesAsync();
+
+           
+        }
+
+        private void serialization()
+        {
+            // DirectoryInfo directory = new DirectoryInfo($"D:\\BSUIR\\.Net - Project\\OOP\\JsonData\\{Student.Login}");
+            // directory.Create();
+            string path = "D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\";
+            string fullPath = $"{path}{Student.Login}";
+
+            if(!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
+            else
+            {
+                serializer.SerializeJson(Student._GrammaList, $"{fullPath}\\GrammaTasks.json");
+            }
+
+            
+        }
+
+        private void deserialization()
+        {
+            string path = "D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\";
+            string fullPath = $"{path}{Student.Login}";
+            
+            
+            Student._GrammaList = serializer.DeserializeJson<GrammaTask>($"{fullPath}\\GrammaTasks.json").ToList();
         }
     }
+
 }

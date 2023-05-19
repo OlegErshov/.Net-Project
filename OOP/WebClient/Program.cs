@@ -29,6 +29,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options=>
     
 }).AddEntityFrameworkStores<AppDbContext>();
 
+
+
 #endregion
 
 
@@ -37,9 +39,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options=>
 builder.Services.AddRazorPages();
 
 
-builder.Services.AddSingleton<IUnitOfWork, EfUnitOfWork>();
-builder.Services.AddSingleton<IStudentService, StudentService>();
-builder.Services.AddSingleton<ITeacherService, TeacherService>();
+builder.Services.AddScoped<IUnitOfWork, EfUnitOfWork>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
 
 var app = builder.Build();
 

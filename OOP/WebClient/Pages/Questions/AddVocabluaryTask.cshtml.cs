@@ -21,9 +21,9 @@ namespace WebClient.Pages.Questions
         public void OnGet(int id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
-            if (Student.homeWork._VocabluaryList.Count == 0 || Student.homeWork._VocabluaryList.Last().questions == null)
+            if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
             {
-                Student.homeWork._VocabluaryList.Add(new VocabluaryTask());
+                Student._VocabluaryList.Add(new VocabluaryTask());
             }
 
             _studentService.UpdateAsync(Student);
@@ -35,7 +35,7 @@ namespace WebClient.Pages.Questions
         public IActionResult OnPost(string Sentence, string MixedAnswer, string Answer,int id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
-            Student.homeWork._VocabluaryList.Last().questions.Add(new VocabluaryQuestion(Sentence, MixedAnswer, Answer));
+            Student._VocabluaryList.Last().questions.Add(new VocabluaryQuestion(Sentence, MixedAnswer, Answer));
             _studentService.UpdateAsync(Student);
 
             return Page();

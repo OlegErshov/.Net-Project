@@ -69,7 +69,7 @@
                         <label>Варианты ответа</label>
                     </div>
                     <div class="col">
-                        @foreach (var item in Model.Student.homeWork._VocabluaryList.Last().questions)
+                        @foreach (var item in Model.Student._VocabluaryList.Last().questions)
                         {
                             <label>@item.letters /</label>
                         }
@@ -79,7 +79,7 @@
 
                 <div class="card-body text-center">
 
-                    @foreach (var item in Model.Student.homeWork._VocabluaryList.Last().questions)
+                    @foreach (var item in Model.Student._VocabluaryList.Last().questions)
                     {
                         <div class="row text-center">
                             <label>@item.Text</label>
