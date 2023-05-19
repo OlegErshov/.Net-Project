@@ -1,5 +1,5 @@
 ﻿using Plugin.Authorization;
-using Repository.UserRepository;
+using Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

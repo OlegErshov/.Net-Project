@@ -1,4 +1,5 @@
-﻿using Plugin.Authorization;
+﻿using Plugin.Questions;
+using Plugin.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.UserRepository
+namespace Repository.Repositories.TasksRepositories
 {
-    public interface IRepository<T> where T : User
+    public interface ITaskRepository<T,P> where T : TaskTemplate<P> where P : AnswerTemplate
     {
         Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default,
-                                params Expression<Func<T, object>>[]? includesProperties);
+                               params Expression<Func<T, object>>[]? includesProperties);
 
         Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);
 
@@ -28,4 +29,5 @@ namespace Repository.UserRepository
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> filter, CancellationToken
        cancellationToken = default);
     }
+}
 }
