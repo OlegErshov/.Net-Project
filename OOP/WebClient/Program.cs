@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Plugin.Authorization;
 using Repository;
-using Repository.UserRepository;
 
 using Repository.Data;
 using Repository.UnitOfWork;

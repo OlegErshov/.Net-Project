@@ -23,7 +23,7 @@ namespace Plugin.Questions
         public bool Cheak(AnswerTemplate ans)
         {
             string answer = ans.StringAnswer;
-            if (answer == word) { return true; }
+           // if (answer == word) { return true; }
             return false;
         }
     }

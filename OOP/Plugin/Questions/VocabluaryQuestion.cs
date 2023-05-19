@@ -24,7 +24,7 @@ namespace Plugin.Questions
         public bool Cheak(AnswerTemplate answ)
         {
             string ans = answ.StringAnswer;
-            if (ans == answer) return true;
+           // if (ans == answer) return true;
             return false;
         }
     }

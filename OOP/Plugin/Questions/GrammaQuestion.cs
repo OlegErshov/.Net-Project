@@ -28,7 +28,7 @@ namespace Plugin.Questions
         public bool Cheak(AnswerTemplate ansTemp)
         {
             List<string> answer = new List<string>();
-            List<int> indexes = ansTemp.IntListAnswer;
+           // List<int> indexes = ansTemp.IntListAnswer;
 
             //foreach (var item in indexes)
             //{
