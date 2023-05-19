@@ -15,6 +15,7 @@ namespace Repository.UnitOfWork
         private readonly Lazy<IRepository<Student>> _studentRepository;
         private readonly Lazy<IRepository<Teacher>> _teacherRepository;
 
+
         public EfUnitOfWork(AppDbContext context)
         {
             _context = context;
@@ -22,6 +23,8 @@ namespace Repository.UnitOfWork
             new EfRepository<Student>(context));
             _teacherRepository = new Lazy<IRepository<Teacher>>(() =>
             new EfRepository<Teacher>(context));
+
+            
         }
 
         public IRepository<Student> StudentRepository => _studentRepository.Value;

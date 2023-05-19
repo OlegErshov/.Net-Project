@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Data;
 
@@ -10,12 +11,25 @@ using Repository.Data;
 namespace Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519121133_add-homewwork-in-database")]
+    partial class addhomewworkindatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+
+            modelBuilder.Entity("Plugin.Authorization.HomeWork", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeWorks");
+                });
 
             modelBuilder.Entity("Plugin.Authorization.Student", b =>
                 {
@@ -24,6 +38,10 @@ namespace Repository.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HomeworkPath")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -168,14 +186,14 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("HomeWorkId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("HomeWorkId");
 
-                    b.ToTable("GrammaTasks");
+                    b.ToTable("GrammaTask");
                 });
 
             modelBuilder.Entity("Plugin.Tasks.InsertTask", b =>
@@ -184,7 +202,7 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("HomeWorkId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("words")
@@ -193,9 +211,9 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("HomeWorkId");
 
-                    b.ToTable("InsertTasks");
+                    b.ToTable("InsertTask");
                 });
 
             modelBuilder.Entity("Plugin.Tasks.SentenceTask", b =>
@@ -204,14 +222,14 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("HomeWorkId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("HomeWorkId");
 
-                    b.ToTable("SentenceTasks");
+                    b.ToTable("SentenceTask");
                 });
 
             modelBuilder.Entity("Plugin.Tasks.VocabluaryTask", b =>
@@ -220,14 +238,14 @@ namespace Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("HomeWorkId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("HomeWorkId");
 
-                    b.ToTable("VocabluaryTasks");
+                    b.ToTable("VocabluaryTask");
                 });
 
             modelBuilder.Entity("Plugin.Authorization.Student", b =>
@@ -267,33 +285,33 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Plugin.Tasks.GrammaTask", b =>
                 {
-                    b.HasOne("Plugin.Authorization.Student", null)
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
                         .WithMany("_GrammaList")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("HomeWorkId");
                 });
 
             modelBuilder.Entity("Plugin.Tasks.InsertTask", b =>
                 {
-                    b.HasOne("Plugin.Authorization.Student", null)
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
                         .WithMany("_InsertList")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("HomeWorkId");
                 });
 
             modelBuilder.Entity("Plugin.Tasks.SentenceTask", b =>
                 {
-                    b.HasOne("Plugin.Authorization.Student", null)
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
                         .WithMany("_SentenceList")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("HomeWorkId");
                 });
 
             modelBuilder.Entity("Plugin.Tasks.VocabluaryTask", b =>
                 {
-                    b.HasOne("Plugin.Authorization.Student", null)
+                    b.HasOne("Plugin.Authorization.HomeWork", null)
                         .WithMany("_VocabluaryList")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("HomeWorkId");
                 });
 
-            modelBuilder.Entity("Plugin.Authorization.Student", b =>
+            modelBuilder.Entity("Plugin.Authorization.HomeWork", b =>
                 {
                     b.Navigation("_GrammaList");
 

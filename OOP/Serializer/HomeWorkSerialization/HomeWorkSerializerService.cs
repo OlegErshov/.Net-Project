@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plugin.Questions
+namespace SerializerLib.HomeWorkSerialization
 {
-    public interface IQuestion
+    public class HomeWorkSerializerService
     {
-        bool Cheak(AnswerTemplate answer);
-
+        
     }
 }

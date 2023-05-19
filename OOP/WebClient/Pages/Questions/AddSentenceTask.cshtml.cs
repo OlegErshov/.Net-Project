@@ -22,9 +22,9 @@ namespace WebClient.Pages.Questions
         public void OnGet(int id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
-            if (Student.homeWork._VocabluaryList.Count == 0 || Student.homeWork._VocabluaryList.Last().questions == null)
+            if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
             {
-                Student.homeWork._SentenceList.Add(new SentenceTask());
+                Student._SentenceList.Add(new SentenceTask());
             }
 
             _studentService.UpdateAsync(Student);
@@ -35,7 +35,7 @@ namespace WebClient.Pages.Questions
             List<string> words = Words.Split(' ').ToList();
 
             Student = _studentService.GetByIdAsync(id).Result;
-            Student.homeWork._SentenceList.Last().AddQuestion(words,Answer);
+            Student._SentenceList.Last().AddQuestion(words,Answer);
             _studentService.UpdateAsync(Student);
 
             return Page();
