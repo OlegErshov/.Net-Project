@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Plugin.Authorization;
+using Plugin.Questions;
+using Plugin.Tasks;
 using Repository.Data;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.UserRepository
+namespace Repository.Repositories.TasksRepositories
 {
-    public class EfRepository<T> : IRepository<T> where T : User
+    public  class EfTaskRepository<T,P> : ITaskRepository<T,P> where T : TaskTemplate<P> where P : AnswerTemplate
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> _entities;
-
-        public EfRepository(AppDbContext context)
+        public EfTaskRepository(AppDbContext context)
         {
             _context = context;
             _entities = context.Set<T>();
@@ -84,4 +84,5 @@ namespace Repository.UserRepository
             _context.Entry(entity).State = EntityState.Modified;
         }
     }
+
 }
