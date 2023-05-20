@@ -55,7 +55,7 @@ namespace Application.Services.TaskServices
             return _unitOfWork.GrammaTaskRepository.GetByIdAsync(id, cancellationToken, includesProperties);
         }
 
-        public Task<IReadOnlyList<GrammaTask>> ListAsync(Expression<Func<GrammaTask, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<GrammaTask, object>>[]? includesProperties)
+        public Task<List<GrammaTask>> ListAsync(Expression<Func<GrammaTask, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<GrammaTask, object>>[]? includesProperties)
         {
             return _unitOfWork.GrammaTaskRepository.ListAsync(filter, cancellationToken, includesProperties);
         }

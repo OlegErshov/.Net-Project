@@ -1,13 +1,14 @@
-﻿@page
+﻿@page "{handler?}"
 @model WebClient.Pages.Questions.AddGrammaTaskModel
 @{
+    
      }
 
 <!--Создаём форму редактирования-->
 <form method="post" class="mt-3">
     <!--Создаём скрытое поле для параметра ID-->
     <input type="hidden" asp-for="Student.Id" />
-
+    
     <!--Добавляем поля редактирования-->
    
 
@@ -97,7 +98,8 @@
                 </div>
 
                 <div class="card-footer text-center">
-                    <button type="submit" asp-page-handler="AddTask" class="btn btn-success ">Добавить задание</button>
+                    
+                    <button type="submit" asp-route-id="@Model.Student.Id" asp-page-handler="AddTask" class="btn btn-success ">Добавить задание</button>
                 </div>
 
             </div>

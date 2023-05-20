@@ -13,11 +13,11 @@ namespace Plugin.Questions
         public string? letters { get; set; } // набор символов из которых состоит нужное слово
        
 
-        public VocabluaryQuestion(string text, string letters, string answer)
+        public VocabluaryQuestion(string text, string letters, string stringAnswer)
         {
             Text = text;
             this.letters = letters;
-            StringAnswer = answer;
+            StringAnswer = stringAnswer;
 
 
         }

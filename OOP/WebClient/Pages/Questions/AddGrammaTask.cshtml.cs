@@ -1,4 +1,6 @@
 using Application.Abstractions;
+using Application.Abstractions.QuestionAbstractions;
+using Application.Abstractions.TaskAbstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -13,12 +15,15 @@ namespace WebClient.Pages.Questions
     public class AddGrammaTaskModel : PageModel
     {
         private IStudentService _studentService;
+        private ITaskService<GrammaTask,GrammaQuestion> _taskService;
+        private IQuestionService<GrammaQuestion> _questionService;
 
         Serializer serializer = new Serializer();
-        public AddGrammaTaskModel(IStudentService userRepo)
+        public AddGrammaTaskModel(IStudentService userRepo,ITaskService<GrammaTask,GrammaQuestion> taskService, IQuestionService<GrammaQuestion> questionService)
         {
-            _studentService= userRepo;
-          
+            _studentService = userRepo;
+            _taskService = taskService;
+            _questionService = questionService;
         }
 
         [BindProperty]
@@ -40,66 +45,54 @@ namespace WebClient.Pages.Questions
         public string AnswerVarients { get; set; }
         public string RightAnswer { get; set; }
 
-        public  IActionResult OnPostAddTask(int id)
+       
+
+        public async  Task<IActionResult> OnPostAddTask(int id)
         {
+            
             Student =  _studentService.GetByIdAsync(id).Result;
 
-            deserialization(); 
-            
-            Student._GrammaList.Add(new GrammaTask());
-            Student._GrammaList.Last().questions = new List<GrammaQuestion>();
+            GrammaTask grammaTask = new GrammaTask() { Student = Student };
+            await _taskService.AddAsync(grammaTask);
+            await _taskService.SaveChangesAsync();
 
-            serialization();
-
-            return RedirectToPage("Test",Student.Id);
+            string url = Url.Page("Test", new { id = Student.Id });
+            return Redirect(url);
         }
-        public void OnPost(string sentence, string answerVarients, string rightAnswer,int id)
+
+
+        public async void OnPost(string sentence, string answerVarients, string rightAnswer,int id)
         {
 
             Student = _studentService.GetByIdAsync(id).Result;
-            deserialization();
 
+            Student._GrammaList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
+
+            GrammaTask grammaTask;
             if (Student._GrammaList.Count == 0)
             {
-                Student._GrammaList.Add(new GrammaTask());
+                grammaTask = new GrammaTask() { Student = Student };
+                await _taskService.AddAsync(grammaTask);
+                await _taskService.SaveChangesAsync();
             }
-            Student._GrammaList.Last().AddQuestion(sentence, answerVarients, rightAnswer);
+           
 
-            serialization();
+            GrammaQuestion question = new GrammaQuestion(sentence, answerVarients, rightAnswer) { 
+                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last().Id).Result };
 
-            _studentService.UpdateAsync(Student);
-            _studentService.SaveChangesAsync();
+            await _questionService.AddAsync(question);
+            await _questionService.SaveChangesAsync();
+
+            Varients = answerVarients.Split(' ').ToList();
+            Answers  = rightAnswer.Split(" ").ToList();
+
+          //  _studentService.UpdateAsync(Student);
+          //  _studentService.SaveChangesAsync();
 
            
         }
-
-        private void serialization()
-        {
-            // DirectoryInfo directory = new DirectoryInfo($"D:\\BSUIR\\.Net - Project\\OOP\\JsonData\\{Student.Login}");
-            // directory.Create();
-            string path = "D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\";
-            string fullPath = $"{path}{Student.Login}";
-
-            if(!Directory.Exists(fullPath))
-            {
-                Directory.CreateDirectory(fullPath);
-            }
-            else
-            {
-                serializer.SerializeJson(Student._GrammaList, $"{fullPath}\\GrammaTasks.json");
-            }
-
-            
-        }
-
-        private void deserialization()
-        {
-            string path = "D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\";
-            string fullPath = $"{path}{Student.Login}";
-            
-            
-            Student._GrammaList = serializer.DeserializeJson<GrammaTask>($"{fullPath}\\GrammaTasks.json").ToList();
-        }
+        
+       
     }
 
 }

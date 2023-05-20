@@ -14,9 +14,9 @@ namespace Plugin.Questions
         
         public string? Sentence { get; set; }
 
-        public InsertQuestion(string answer, string? sentence)
+        public InsertQuestion(string stringAnswer, string? sentence)
         {
-            StringAnswer = answer;
+            StringAnswer = stringAnswer;
             this.Sentence = sentence;
         }
 

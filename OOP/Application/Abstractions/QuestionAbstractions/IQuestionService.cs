@@ -1,5 +1,4 @@
 ﻿using Plugin.Questions;
-using Plugin.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +6,10 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Abstractions.TaskAbstractions
+namespace Application.Abstractions.QuestionAbstractions
 {
-    public interface ITaskService<T,P> where T : TaskTemplate<P> where P : AnswerTemplate
+    public interface IQuestionService<T> where T : AnswerTemplate
     {
-        Task<IReadOnlyList<P>> GetAllQuestiounsAsync(int grammaTaskId,CancellationToken cancellationToken = default);
-
         Task<IReadOnlyList<T>> GetAllAsync(CancellationToken cancellationToken = default);
 
         Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default,
@@ -34,4 +31,3 @@ namespace Application.Abstractions.TaskAbstractions
         Task SaveChangesAsync();
     }
 }
-

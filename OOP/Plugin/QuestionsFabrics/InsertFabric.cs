@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Plugin.QuestionsFabrics
 {
-    public class InsertFabric : IQuestionFabric
+    public class InsertFabric 
     {
 
-        public IQuestion Create(QuestionTemplate question)
-        {
-            InsertQuestion q = new InsertQuestion(question.word, question.Sentence);
-            return q;
-        }
+        //public IQuestion Create(QuestionTemplate question)
+        //{
+        //    InsertQuestion q = new InsertQuestion(question.word, question.Sentence);
+        //    return q;
+        //}
     }
 }

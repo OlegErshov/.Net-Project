@@ -1,4 +1,5 @@
-﻿using Plugin.Questions;
+﻿using Plugin.Authorization;
+using Plugin.Questions;
 using Plugin.QuestionsFabrics;
 using SQLite;
 using System;
@@ -12,7 +13,7 @@ namespace Plugin.Tasks
     public class GrammaTask : TaskTemplate<GrammaQuestion>
     {
         
-        
+        public Student Student { get; set; }
         public GrammaTask() {
             questions = new List<GrammaQuestion>();
         }

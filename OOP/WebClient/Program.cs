@@ -8,6 +8,12 @@ using Repository.Data;
 using Repository.UnitOfWork;
 using Application.Abstractions;
 using Application.Services;
+using Application.Abstractions.TaskAbstractions;
+using Plugin.Tasks;
+using Plugin.Questions;
+using Application.Services.TaskServices;
+using Application.Abstractions.QuestionAbstractions;
+using Application.Services.QuestionServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +47,10 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, EfUnitOfWork>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
+
+builder.Services.AddScoped<ITaskService<GrammaTask, GrammaQuestion>, GrammaTaskService>();
+builder.Services.AddScoped<IQuestionService<GrammaQuestion>, GrammaQuestionService>();
+
 
 var app = builder.Build();
 
