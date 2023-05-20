@@ -30,9 +30,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label asp-for="Word" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                        <label asp-for="Answer" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
                         <div class="col-12 col-lg-6">
-                            <input asp-for="Word" class="form-control mr-2" placeholder="Введите ответ 1 слово" />
+                            <input asp-for="Answer" class="form-control mr-2" placeholder="Введите ответ 1 слово" />
                             <!--Добавляем сообщение валидации формы-->
 
                         </div>
@@ -45,9 +45,9 @@
 
                 <div class="card-footer text-center">
                     @*  <a asp-page="/Questions/AddGrammaTask" asp-route-id="@Model.User.id" class="btn-success">добавить вопрос</a>*@
-                     <label asp-for="Word" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                     <label asp-for="Answer" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
                         <div class="col-12 col-lg-6">
-                            <input asp-for="Word" class="form-control mr-2" placeholder="Введите ответ 1 слово" />
+                            <input asp-for="Answer" class="form-control mr-2" placeholder="Введите ответ 1 слово" />
                             <!--Добавляем сообщение валидации формы-->
 
                         </div>
@@ -89,7 +89,14 @@
                 </div>
 
                 <div class="card-footer text-center">
-                    <a asp-page="/Questions/Test" asp-route-id="@Model.Student.Id" class="btn-success">добавить задание</a>
+                     <label asp-for="Varients" class="col col-lg-4 col-form-label text-right">Введите варианты ответов:</label>
+                        <div class="col-12 col-lg-6">
+                            <input asp-for="Varients" class="form-control mr-2" placeholder="Введите варианты ответов" />
+                            <!--Добавляем сообщение валидации формы-->
+
+                        </div>
+
+                    <button type="submit" asp-route-id="@Model.Student.Id" asp-page-handler="AddTask" class="btn btn-success ">Добавить задание</button>
                 </div>
 
             </div>

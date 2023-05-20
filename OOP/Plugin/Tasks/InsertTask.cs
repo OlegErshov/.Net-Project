@@ -1,4 +1,5 @@
-﻿using Plugin.Questions;
+﻿using Plugin.Authorization;
+using Plugin.Questions;
 using Plugin.QuestionsFabrics;
 using SQLite;
 using System;
@@ -13,7 +14,7 @@ namespace Plugin.Tasks
     {
        
         public string words { get; set; }
-
+        public Student Student { get; set; }
         public void addQuestion(string sentence, string word)
         {
             //QuestionTemplate ques = new QuestionTemplate();

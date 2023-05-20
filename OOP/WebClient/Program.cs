@@ -51,6 +51,9 @@ builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<ITaskService<GrammaTask, GrammaQuestion>, GrammaTaskService>();
 builder.Services.AddScoped<IQuestionService<GrammaQuestion>, GrammaQuestionService>();
 
+builder.Services.AddScoped<ITaskService<InsertTask, InsertQuestion>, InsertTaskService>();
+builder.Services.AddScoped<IQuestionService<InsertQuestion>, InsertQuestionService>();
+
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Plugin.Questions
        
         
         public string? Sentence { get; set; }
+        public InsertTask task { get; set; }
 
         public InsertQuestion(string stringAnswer, string? sentence)
         {
