@@ -21,7 +21,7 @@
                 <div class="card-body text-center">
 
                     <div class="form-group row">
-                        <label asp-for="Sentence" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                        <label asp-for="Sentence" class="col col-lg-4 col-form-label text-right">Введите услвоие:</label>
                         <div class="col-12 col-lg-6">
                             <input asp-for="Sentence" class="form-control mr-2" placeholder="Введите предложение" />
                             <!--Добавляем сообщение валидации формы-->
@@ -30,9 +30,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label asp-for="Answer" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                        <label asp-for="Answer" class="col col-lg-4 col-form-label text-right">Введите ответ:</label>
                         <div class="col-12 col-lg-6">
-                            <input asp-for="Answer" class="form-control mr-2" placeholder="Введите ответ 1 слово" />
+                            <input asp-for="Answer" class="form-control mr-2" placeholder="Введите ответ " />
                             <!--Добавляем сообщение валидации формы-->
 
                         </div>
@@ -41,21 +41,13 @@
 
 
                 </div>
-
-
-                <div class="card-footer text-center">
-                    @*  <a asp-page="/Questions/AddGrammaTask" asp-route-id="@Model.User.id" class="btn-success">добавить вопрос</a>*@
-                     <label asp-for="Answer" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
-                        <div class="col-12 col-lg-6">
-                            <input asp-for="Answer" class="form-control mr-2" placeholder="Введите ответ 1 слово" />
-                            <!--Добавляем сообщение валидации формы-->
-
-                        </div>
+                <div class="card-footer" text-center>
+                    <button type="submit" asp-route-id="@Model.Student.Id" class="btn btn-success ">Добавить вопрос</button>
                 </div>
 
             </div>
         </div>
-        <button type="submit" class="btn btn-success ">Update</button>
+       
     </div>
 
     <div class="col justify-content-center m-3">
@@ -69,9 +61,9 @@
                         <label>Варианты ответа</label>
                     </div>
                     <div class="col">
-                        @foreach (var item in Model.Student._VocabluaryList.Last().questions)
+                        @foreach (var item in Model.Student._InsertList.Last().questions)
                         {
-                            <label>@item.letters /</label>
+                            <label>@item.StringAnswer /</label>
                         }
                     </div>
 
@@ -79,17 +71,16 @@
 
                 <div class="card-body text-center">
 
-                    @foreach (var item in Model.Student._VocabluaryList.Last().questions)
+                    @foreach (var item in Model.Student._InsertList.Last().questions)
                     {
                         <div class="row text-center">
-                            <label>@item.Text</label>
+                            <label>@item.Sentence</label>
                         </div>
 
                     }
                 </div>
 
                 <div class="card-footer text-center">
-                     <label asp-for="Varients" class="col col-lg-4 col-form-label text-right">Введите варианты ответов:</label>
                         <div class="col-12 col-lg-6">
                             <input asp-for="Varients" class="form-control mr-2" placeholder="Введите варианты ответов" />
                             <!--Добавляем сообщение валидации формы-->

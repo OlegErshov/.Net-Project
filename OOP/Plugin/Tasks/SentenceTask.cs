@@ -1,4 +1,5 @@
-﻿using Plugin.Questions;
+﻿using Plugin.Authorization;
+using Plugin.Questions;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Plugin.Tasks
 {
     public class SentenceTask : TaskTemplate<SentenceQuestion>
     {
+        public Student Student { get; set; }
         
         public void AddQuestion(List<string>? Words, string ans)
         {

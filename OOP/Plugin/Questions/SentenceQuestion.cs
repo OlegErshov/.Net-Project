@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Plugin.Questions
         // вопрос для граммаики, приведен список слов основных и нужно добавить грам структуры для формирования предложения
         
         public string Words { get; set; }
-
+        public SentenceTask task { get; set; }
         
 
         public SentenceQuestion(string words, string stringAnswer)
