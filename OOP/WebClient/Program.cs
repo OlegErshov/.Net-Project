@@ -54,6 +54,11 @@ builder.Services.AddScoped<IQuestionService<GrammaQuestion>, GrammaQuestionServi
 builder.Services.AddScoped<ITaskService<InsertTask, InsertQuestion>, InsertTaskService>();
 builder.Services.AddScoped<IQuestionService<InsertQuestion>, InsertQuestionService>();
 
+builder.Services.AddScoped<ITaskService<VocabluaryTask, VocabluaryQuestion>, VocabluaryTaskService>();
+builder.Services.AddScoped<IQuestionService<VocabluaryQuestion>, VocabluaryQuestionService>();
+
+builder.Services.AddScoped<ITaskService<SentenceTask, SentenceQuestion>, SentenceTaskService>();
+builder.Services.AddScoped<IQuestionService<SentenceQuestion>, SentenceQuestonService>();
 
 var app = builder.Build();
 
