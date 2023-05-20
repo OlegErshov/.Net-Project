@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
 using Plugin.Tasks;
-using Repository.UserRepository;
+
 
 namespace WebClient.Pages.Users
 {

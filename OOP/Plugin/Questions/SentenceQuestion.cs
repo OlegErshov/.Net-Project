@@ -14,10 +14,10 @@ namespace Plugin.Questions
 
         
 
-        public SentenceQuestion(string words, string answer)
+        public SentenceQuestion(string words, string stringAnswer)
         {
             Words = words;
-            StringAnswer = answer;
+            StringAnswer = stringAnswer;
         }
 
         public SentenceQuestion()

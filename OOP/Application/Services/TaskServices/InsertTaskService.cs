@@ -52,7 +52,7 @@ namespace Application.Services.TaskServices
             return _unitOfWork.InsertTaskRepository.GetByIdAsync(id, cancellationToken, includesProperties);
         }
 
-        public Task<IReadOnlyList<InsertTask>> ListAsync(Expression<Func<InsertTask, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<InsertTask, object>>[]? includesProperties)
+        public Task<List<InsertTask>> ListAsync(Expression<Func<InsertTask, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<InsertTask, object>>[]? includesProperties)
         {
             return _unitOfWork.InsertTaskRepository.ListAsync(filter, cancellationToken, includesProperties);
         }

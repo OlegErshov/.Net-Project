@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Plugin.Questions
         
         public string Sentence { get; set; }
         public string AnswerVarients { get; set; }
+
+        public GrammaTask task { get; set; } = new();
         
 
         public GrammaQuestion(string sentence, string varients, string answer)

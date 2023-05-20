@@ -16,7 +16,7 @@ namespace Repository.Repositories.TasksRepositories
 
         Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);
 
-        Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> filter,
+        Task<List<T>> ListAsync(Expression<Func<T, bool>> filter,
                                         CancellationToken cancellationToken = default,
                                         params Expression<Func<T, object>>[]? includesProperties);
 
