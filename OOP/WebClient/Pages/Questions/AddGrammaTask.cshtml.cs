@@ -84,12 +84,7 @@ namespace WebClient.Pages.Questions
             await _questionService.SaveChangesAsync();
 
             Varients = answerVarients.Split(' ').ToList();
-            Answers  = rightAnswer.Split(" ").ToList();
-
-          //  _studentService.UpdateAsync(Student);
-          //  _studentService.SaveChangesAsync();
-
-           
+            Answers  = rightAnswer.Split(" ").ToList(); 
         }
         
        
