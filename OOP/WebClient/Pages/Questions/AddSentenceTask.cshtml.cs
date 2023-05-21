@@ -36,7 +36,7 @@ namespace WebClient.Pages.Questions
                 Student._SentenceList.Add(new SentenceTask());
             }
 
-            _studentService.UpdateAsync(Student);
+            
         }
 
 
@@ -62,7 +62,7 @@ namespace WebClient.Pages.Questions
             Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
 
             SentenceTask sentenceTask;
-            if (Student._GrammaList.Count == 0)
+            if (Student._SentenceList.Count == 0)
             {
                 sentenceTask = new SentenceTask() { Student = Student };
                 await _sentenceTaskService.AddAsync(sentenceTask);
@@ -72,7 +72,7 @@ namespace WebClient.Pages.Questions
 
             SentenceQuestion question = new SentenceQuestion(Words,Answer)
             {
-                task = _sentenceTaskService.FirstOrDefaultAsync((x) => x.Id == Student._GrammaList.Last().Id).Result
+                task = _sentenceTaskService.FirstOrDefaultAsync((x) => x.Id == Student._SentenceList.Last().Id).Result
             };
 
             await _sentenceQuestionService.AddAsync(question);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Plugin.Tasks;
 
 namespace Plugin.Questions
 {
@@ -11,6 +7,8 @@ namespace Plugin.Questions
         
         public string? Text { get; set; } // смысловое предложение
         public string? letters { get; set; } // набор символов из которых состоит нужное слово
+
+        public VocabluaryTask task { get; set; }
        
 
         public VocabluaryQuestion(string text, string letters, string stringAnswer)

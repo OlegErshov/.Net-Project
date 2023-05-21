@@ -12,6 +12,11 @@ namespace Plugin.Tasks
     public class SentenceTask : TaskTemplate<SentenceQuestion>
     {
         public Student Student { get; set; }
+
+        public SentenceTask()
+        {
+            questions = new List<SentenceQuestion>();
+        }
         
         public void AddQuestion(List<string>? Words, string ans)
         {

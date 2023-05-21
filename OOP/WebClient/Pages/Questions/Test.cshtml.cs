@@ -21,17 +21,34 @@ namespace WebClient.Pages.Questions
         private ITaskService<InsertTask, InsertQuestion> _insertTaskService;
         private IQuestionService<InsertQuestion> _insertQuestionService;
 
+        private ITaskService<SentenceTask, SentenceQuestion> _sentenceTaskService;
+        private IQuestionService<SentenceQuestion> _sentenceQuestionService;
+
+        private ITaskService<VocabluaryTask, VocabluaryQuestion> _vocabluaryTaskService;
+        private IQuestionService<VocabluaryQuestion> _vocabluaryQuestionService;
+
+
         Serializer serializer = new Serializer();
 
         public TestModel(IStudentService service, ITaskService<GrammaTask, GrammaQuestion> taskService,
             IQuestionService<GrammaQuestion> questionService, ITaskService<InsertTask, InsertQuestion> insertTaskService,
-            IQuestionService<InsertQuestion> insertQuestionService)
+            IQuestionService<InsertQuestion> insertQuestionService, ITaskService<SentenceTask, SentenceQuestion> sentenceTaskService,
+            IQuestionService<SentenceQuestion> sentenceQuestionService, ITaskService<VocabluaryTask, VocabluaryQuestion> vocabluaryTaskService,
+            IQuestionService<VocabluaryQuestion> vocabluaryQuestionService)
         {
             _studentService = service;
             _grammaTaskService = taskService;
             _questionService = questionService;
+
             _insertTaskService = insertTaskService;
             _insertQuestionService = insertQuestionService;
+
+            _sentenceTaskService = sentenceTaskService;
+            _sentenceQuestionService = sentenceQuestionService;
+
+            _vocabluaryTaskService = vocabluaryTaskService;
+            _vocabluaryQuestionService = vocabluaryQuestionService;
+
         }
 
         [BindProperty]
@@ -51,6 +68,12 @@ namespace WebClient.Pages.Questions
             }
 
             Student._InsertList = _insertTaskService.ListAsync((x) => x.Student.Id == id).Result;
+            foreach (var item in Student._InsertList)
+            {
+                item.questions = _insertQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+            }
+
+            Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == id).Result;
             foreach (var item in Student._InsertList)
             {
                 item.questions = _insertQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
