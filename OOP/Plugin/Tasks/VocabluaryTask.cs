@@ -1,4 +1,5 @@
-﻿using Plugin.Questions;
+﻿using Plugin.Authorization;
+using Plugin.Questions;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,12 @@ namespace Plugin.Tasks
 {
     public class VocabluaryTask : TaskTemplate<VocabluaryQuestion>
     {
+        public Student Student { get; set; }
 
+        public VocabluaryTask()
+        {
+            questions= new List<VocabluaryQuestion>();
+        }
         void AddQuestion(string text, string letters, string answer)
         {
             VocabluaryQuestion q = new VocabluaryQuestion(text, letters, answer);
