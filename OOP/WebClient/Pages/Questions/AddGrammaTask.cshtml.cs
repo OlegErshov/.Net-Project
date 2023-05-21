@@ -78,13 +78,13 @@ namespace WebClient.Pages.Questions
            
 
             GrammaQuestion question = new GrammaQuestion(sentence, answerVarients, rightAnswer) { 
-                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last()Id).Result };
+                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last().Id).Result };
 
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();
 
             Varients.Add(answerVarients);
-            Answers.Add(rightAnswer)
+            Answers.Add(rightAnswer);
             return Page();
         }
         
