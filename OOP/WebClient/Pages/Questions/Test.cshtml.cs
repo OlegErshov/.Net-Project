@@ -74,9 +74,15 @@ namespace WebClient.Pages.Questions
             }
 
             Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == id).Result;
-            foreach (var item in Student._InsertList)
+            foreach (var item in Student._SentenceList)
             {
-                item.questions = _insertQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+                item.questions = _sentenceQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+            }
+
+            Student._VocabluaryList = _vocabluaryTaskService.ListAsync((x) => x.Student.Id == id).Result;
+            foreach (var item in Student._VocabluaryList)
+            {
+                item.questions = _vocabluaryQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
             }
 
             if (Student == null || Student._GrammaList == null) {
