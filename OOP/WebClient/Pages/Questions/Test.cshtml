@@ -7,8 +7,9 @@
 
 <div class="row">
     
-    @foreach (var item in Model.Student._GrammaList)
+    @for (int i = 0; i < Model.Student._GrammaList.Count() - 1; i++)  
     {
+        
         <div class ="col-12 col-sm-6 col-lg-4">
             <div class="card-deck">
                 <div class="card m-3">
@@ -17,7 +18,7 @@
                     </div>
 
                     <div class="card-body text-center">
-                        @foreach(var ob in item.questions){
+                        @foreach (var ob in Model.Student._GrammaList[i].questions){
                             <h5>@ob.Sentence</h5>
                           
                             @foreach(var word in ob.AnswerVarients)
@@ -42,19 +43,19 @@
         
     }
 
-    @foreach (var item in Model.Student._VocabluaryList)
+    @for (int i = 0; i < Model.Student._VocabluaryList.Count() -1; i++)
     {
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="card-deck">
                 <div class="card m-3">
                     <div class="card-header text-center">
-                        <h3>Словарь</h3>
+                        <h3>Vocabluary</h3>
 
                          <div class="col">
                         <label>Варианты ответа</label>
                         </div>
                         <div class="col">
-                            @foreach (var ob in Model.Student._VocabluaryList.Last().questions)
+                            @foreach (var ob in Model.Student._VocabluaryList[i].questions)
                             {
                                 <label>@ob.letters /</label>
                             }
@@ -63,7 +64,7 @@
                     </div>
 
                     <div class="card-body text-center">
-                        @foreach (var ob in item.questions)
+                        @foreach (var ob in Model.Student._VocabluaryList[i].questions)
                         {
                             <div class="row">
                                 <h5>@ob.Text</h5>
@@ -85,13 +86,13 @@
 
     }
 
-    @foreach (var item in Model.Student._SentenceList)
+    @for(int i = 0; i < Model.Student._SentenceList.Count() - 1;i++)
     {
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="card-deck">
                 <div class="card m-3">
                     <div class="card-header text-center">
-                        <h3>Грамматика</h3>
+                        <h3>Sentence</h3>
 
                         <div class="col">
                             <label>Составьте предложения</label>
@@ -100,7 +101,7 @@
                     </div>
 
                     <div class="card-body text-center">
-                        @foreach (var ob in item.questions)
+                        @foreach (var ob in Model.Student._SentenceList[i].questions)
                         {
                             <div class="col">
                                 
@@ -126,6 +127,51 @@
                 </div>
             </div>
         </div>
+
+
+    }
+
+    @for(int i = 0; i < Model.Student._InsertList.Count() - 1;i++)
+    {
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card-deck">
+                    <div class="card m-3">
+                        <div class="card-header text-center">
+                            <h3>Insert</h3>
+
+                            <div class="col">
+                                <label>Вставьте нужные слова</label>
+                            </div>
+
+                        </div>
+
+                        <div class="card-body text-center">
+                        <label>@Model.Student._InsertList[i].words /</label>
+                        @foreach (var ob in Model.Student._InsertList[i].questions)
+                        {
+                                    <div class="col">
+
+
+                                      <div class="col text-center">
+                                            <label>@ob.Sentence /</label>
+                                       </div>
+
+                                       
+
+                                    </div>
+
+
+                        }
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn-success">Проверить</a>
+                            <a href="#" class="btn-danger">Удалить</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
     }

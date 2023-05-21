@@ -61,7 +61,7 @@ namespace WebClient.Pages.Questions
         }
 
 
-        public async void OnPost(string sentence, string answerVarients, string rightAnswer,int id)
+        public async Task<IActionResult> OnPost(string sentence, string answerVarients, string rightAnswer,int id)
         {
 
             Student = _studentService.GetByIdAsync(id).Result;
@@ -78,13 +78,14 @@ namespace WebClient.Pages.Questions
            
 
             GrammaQuestion question = new GrammaQuestion(sentence, answerVarients, rightAnswer) { 
-                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last().Id).Result };
+                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last()Id).Result };
 
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();
 
-            Varients = answerVarients.Split(' ').ToList();
-            Answers  = rightAnswer.Split(" ").ToList(); 
+            Varients.Add(answerVarients);
+            Answers.Add(rightAnswer)
+            return Page();
         }
         
        

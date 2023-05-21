@@ -67,7 +67,7 @@ namespace WebClient.Pages.Questions
             Student._InsertList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
 
             InsertTask insertTask;
-            if (Student._GrammaList.Count == 0)
+            if (Student._InsertList.Count == 0)
             {
                 insertTask = new InsertTask() { Student = Student };
                 await _taskService.AddAsync(insertTask);
