@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
 using Plugin.Questions;
 using Plugin.Tasks;
-using Repository;
-using SerializerLib;
 
 namespace WebClient.Pages.Questions
 {
@@ -28,7 +26,6 @@ namespace WebClient.Pages.Questions
         private IQuestionService<VocabluaryQuestion> _vocabluaryQuestionService;
 
 
-        Serializer serializer = new Serializer();
 
         public TestModel(IStudentService service, ITaskService<GrammaTask, GrammaQuestion> taskService,
             IQuestionService<GrammaQuestion> questionService, ITaskService<InsertTask, InsertQuestion> insertTaskService,
