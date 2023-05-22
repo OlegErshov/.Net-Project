@@ -15,6 +15,7 @@ using Application.Services.TaskServices;
 using Application.Abstractions.QuestionAbstractions;
 using Application.Services.QuestionServices;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region DB & Identity
@@ -23,7 +24,7 @@ var connString = builder.Configuration.GetConnectionString("SqLiteConnection");
 builder.Services.AddDbContext<AppDbContext>(opt =>
                                 opt.UseSqlite(connString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options=>
+builder.Services.AddDefaultIdentity<User>(options=>
 {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireDigit = false;
