@@ -39,12 +39,7 @@ namespace WebClient.Pages.Users
             await _studentService.AddAsync(student);
             await _studentService.SaveChangesAsync();
 
-            Directory.CreateDirectory($"D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\{student.Login}");
-
-            serializer.SerializeJson<GrammaTask>(student._GrammaList, $"D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\{student.Login}\\GrammaTasks.json");
-            serializer.SerializeJson<InsertTask>(student._InsertList, $"D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\{student.Login}\\InsertTasks.json");
-            serializer.SerializeJson<SentenceTask>(student._SentenceList, $"D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\{student.Login}\\SentenceTasks.json");
-            serializer.SerializeJson<VocabluaryTask>(student._VocabluaryList, $"D:\\BSUIR\\.Net-Project\\OOP\\JsonData\\{student.Login}\\VocabluaryTasks.json");
+            
         }
     }
 }
