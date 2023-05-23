@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Plugin.Authorization;
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+@inject SignInManager<Student> SignInManager
+@inject UserManager<Student> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))

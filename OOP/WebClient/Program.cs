@@ -21,10 +21,11 @@ var builder = WebApplication.CreateBuilder(args);
 #region DB & Identity
 
 var connString = builder.Configuration.GetConnectionString("SqLiteConnection");
+
 builder.Services.AddDbContext<AppDbContext>(opt =>
                                 opt.UseSqlite(connString));
 
-builder.Services.AddDefaultIdentity<User>(options=>
+builder.Services.AddDefaultIdentity<Student>(options=>
 {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireDigit = false;
@@ -34,6 +35,7 @@ builder.Services.AddDefaultIdentity<User>(options=>
     options.Password.RequiredLength = 6;
     
 }).AddEntityFrameworkStores<AppDbContext>();
+
 
 
 
