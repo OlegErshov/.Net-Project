@@ -14,6 +14,7 @@ using Plugin.Questions;
 using Application.Services.TaskServices;
 using Application.Abstractions.QuestionAbstractions;
 using Application.Services.QuestionServices;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +35,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options=>
     options.Password.RequireUppercase= false;
     options.Password.RequiredLength = 6;
     
-}).AddEntityFrameworkStores<AppDbContext>();
+}).AddRoles<IdentityRole>()
+  .AddEntityFrameworkStores<AppDbContext>();
 
 
 
