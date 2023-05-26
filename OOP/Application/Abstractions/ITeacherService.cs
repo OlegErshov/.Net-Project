@@ -9,6 +9,6 @@ namespace Application.Abstractions
 {
     public interface ITeacherService : IBaseService<Teacher>
     {
-        Task<IReadOnlyList<Student>> GetStudentsListAsync(int positionId, CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<Student>> GetStudentsListAsync(string positionId, CancellationToken cancellationToken = default);
     }
 }

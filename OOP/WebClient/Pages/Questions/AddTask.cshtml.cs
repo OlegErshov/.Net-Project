@@ -17,7 +17,7 @@ namespace WebClient.Pages.Questions
 
         [BindProperty]
         public Student User { get; set; }
-        public void OnGet(int id)
+        public void OnGet(string id)
         {
             User = _studentService.GetByIdAsync(id).Result;
         }

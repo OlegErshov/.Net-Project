@@ -19,7 +19,7 @@ namespace WebClient.Pages.Users
             _studentService = studentService;
         }
 
-        public void OnGet(int id)
+        public void OnGet(string id)
         {
             User = _studentService.GetByIdAsync(id).Result;
         }

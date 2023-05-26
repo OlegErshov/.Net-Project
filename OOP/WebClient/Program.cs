@@ -25,7 +25,7 @@ var connString = builder.Configuration.GetConnectionString("SqLiteConnection");
 builder.Services.AddDbContext<AppDbContext>(opt =>
                                 opt.UseSqlite(connString));
 
-builder.Services.AddDefaultIdentity<Student>(options=>
+builder.Services.AddDefaultIdentity<IdentityUser>(options=>
 {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireDigit = false;

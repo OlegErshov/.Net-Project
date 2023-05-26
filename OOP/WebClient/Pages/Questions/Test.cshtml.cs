@@ -54,7 +54,7 @@ namespace WebClient.Pages.Questions
         
 
       
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGet(string id)
         {
             Student =  _studentService.GetByIdAsync(id).Result;
 

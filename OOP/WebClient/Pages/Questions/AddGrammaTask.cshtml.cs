@@ -1,6 +1,7 @@
 using Application.Abstractions;
 using Application.Abstractions.QuestionAbstractions;
 using Application.Abstractions.TaskAbstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -12,6 +13,7 @@ using SerializerLib;
 
 namespace WebClient.Pages.Questions
 {
+    [Authorize()]
     public class AddGrammaTaskModel : PageModel
     {
         private IStudentService _studentService;
@@ -28,7 +30,7 @@ namespace WebClient.Pages.Questions
 
         [BindProperty]
         public Student Student { get; set; }
-        public void OnGet(int id)
+        public void OnGet(string id)
         {
             
             Student = _studentService.GetByIdAsync(id).Result;
@@ -47,7 +49,7 @@ namespace WebClient.Pages.Questions
 
        
 
-        public async  Task<IActionResult> OnPostAddTask(int id)
+        public async  Task<IActionResult> OnPostAddTask(string id)
         {
             
             Student =  _studentService.GetByIdAsync(id).Result;
@@ -61,7 +63,7 @@ namespace WebClient.Pages.Questions
         }
 
 
-        public async Task<IActionResult> OnPost(string sentence, string answerVarients, string rightAnswer,int id)
+        public async Task<IActionResult> OnPost(string sentence, string answerVarients, string rightAnswer,string id)
         {
 
             Student = _studentService.GetByIdAsync(id).Result;

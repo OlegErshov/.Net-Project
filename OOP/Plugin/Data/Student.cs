@@ -1,4 +1,5 @@
-﻿using Plugin.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using Plugin.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace Plugin.Authorization
 {
-    public class Student : User
+    public class Student : IdentityUser
     {
-        public const string Role = "student";
+       
 
         public Student(string email, string login, string password)
         {
             Email = email;
-            Login = login;
-            Password = password;
+            UserName = login;
+            PasswordHash = password;
             
         }
         
        
-        public Student(string email, string login, string password, int id)
+        public Student(string email, string login, string password, string id)
         {
             Email = email;
-            Login = login;
-            Password = password;
+            UserName = login;
+            PasswordHash = password;
             Id = id;
         }
 

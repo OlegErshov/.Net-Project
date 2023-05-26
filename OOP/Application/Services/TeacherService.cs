@@ -38,16 +38,17 @@ namespace Application.Services
             return _unitOfWork.TeacherRepository.ListAllAsync(cancellationToken);   
         }
 
-        public Task<Teacher> GetByIdAsync(int id, CancellationToken cancellationToken = default, params Expression<Func<Teacher, object>>[]? includesProperties)
+        public Task<Teacher> GetByIdAsync(string id, CancellationToken cancellationToken = default, params Expression<Func<Teacher, object>>[]? includesProperties)
         {
             return _unitOfWork.TeacherRepository.GetByIdAsync(id, cancellationToken, includesProperties);
         }
 
-        public Task<IReadOnlyList<Student>> GetStudentsListAsync(int positionId, CancellationToken cancellationToken = default)
+        public Task<IReadOnlyList<Student>> GetStudentsListAsync(string positionId, CancellationToken cancellationToken = default)
         {
-            var pos = _unitOfWork.TeacherRepository.ListAsync((pos) => pos.Id == positionId, cancellationToken).Result; // ??? (pos) => pos.id
-            var res = pos.Select(x => x.students).First().ToList().AsReadOnly();
-            return Task.FromResult((IReadOnlyList<Student>)res);
+            /* var pos = _unitOfWork.TeacherRepository.ListAsync((pos) => pos.Id == positionId, cancellationToken).Result; // ??? (pos) => pos.id
+             var res = pos.Select(x => x.students).First().ToList().AsReadOnly();
+             return Task.FromResult((IReadOnlyList<Student>)res);*/
+            return null;
         }
 
         public Task<IReadOnlyList<Teacher>> ListAsync(Expression<Func<Teacher, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<Teacher, object>>[]? includesProperties)
