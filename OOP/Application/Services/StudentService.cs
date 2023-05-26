@@ -39,7 +39,7 @@ namespace Application.Services
             return _unitOfWork.StudentRepository.ListAllAsync(cancellationToken);
         }
 
-        public Task<Student> GetByIdAsync(int id, CancellationToken cancellationToken = default, params Expression<Func<Student, object>>[]? includesProperties)
+        public Task<Student> GetByIdAsync(string id, CancellationToken cancellationToken = default, params Expression<Func<Student, object>>[]? includesProperties)
         {
             return _unitOfWork.StudentRepository.GetByIdAsync(id,cancellationToken,includesProperties);
         }

@@ -1,4 +1,5 @@
-﻿using Plugin.Authorization;
+﻿using Microsoft.AspNetCore.Identity;
+using Plugin.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Application.Abstractions
 {
-    public  interface IBaseService<T> where T : User
+    public  interface IBaseService<T> where T : IdentityUser
     {
         Task<IReadOnlyList<T>> GetAllAsync(CancellationToken cancellationToken = default);
 
-        Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default,
+        Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default,
             params Expression<Func<T, object>>[]? includesProperties);
 
         Task AddAsync(T item, CancellationToken cancellationToken = default);

@@ -1,4 +1,6 @@
-﻿using Plugin.Authorization;
+﻿
+using Microsoft.AspNetCore.Identity;
+using Plugin.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public interface IRepository<T> where T : User
+    public interface IRepository<T> where T : IdentityUser
     {
-        Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default,
+        Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default,
                                 params Expression<Func<T, object>>[]? includesProperties);
 
         Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);

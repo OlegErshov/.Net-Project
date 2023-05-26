@@ -25,7 +25,7 @@ namespace WebClient.Pages.Questions
         }
 
         public Student Student { get; set; }
-        public void OnGet(int id)
+        public void OnGet(string id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
             if (Student._InsertList.Count == 0 || Student._InsertList.Last().questions == null)
@@ -43,7 +43,7 @@ namespace WebClient.Pages.Questions
         [BindProperty]
         public string Varients { get; set; }
 
-        public async Task<IActionResult> OnPostAddTask(int id)
+        public async Task<IActionResult> OnPostAddTask(string id)
         {
 
             Student = _studentService.GetByIdAsync(id).Result;
@@ -60,7 +60,7 @@ namespace WebClient.Pages.Questions
         }
 
 
-        public async void OnPost(int id)
+        public async void OnPost(string id)
         {
             Student = _studentService.GetByIdAsync(id).Result;
 

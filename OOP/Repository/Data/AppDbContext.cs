@@ -1,15 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Plugin.Authorization;
 using Plugin.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Repository.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -23,5 +22,7 @@ namespace Repository.Data
         public DbSet<InsertTask> InsertTasks { get; set; }
         public DbSet<VocabluaryTask> VocabluaryTasks { get; set; }
         public DbSet<SentenceTask> SentenceTasks { get; set; }
+
+       
     }
 }

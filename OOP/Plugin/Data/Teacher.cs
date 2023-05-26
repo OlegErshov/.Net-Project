@@ -1,4 +1,5 @@
-﻿using Plugin.QuestionsFabrics;
+﻿using Microsoft.AspNetCore.Identity;
+using Plugin.QuestionsFabrics;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Authorization
 {
-    public class Teacher : User
+    public class Teacher : IdentityUser
     {
        
         public List<Student> students { get; set; }

@@ -61,7 +61,7 @@ namespace Repository.UnitOfWork
             _sentenceQuestionRepository = new Lazy<IQuestionRepository<SentenceQuestion>>(() =>
             new EfQuestionRepository<SentenceQuestion>(context));
 
-
+            
         }
 
         public IRepository<Student> StudentRepository => _studentRepository.Value;

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Plugin.Authorization;
 using Repository.Data;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class EfRepository<T> : IRepository<T> where T : User
+    public class EfRepository<T> : IRepository<T> where T : IdentityUser
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> _entities;
@@ -35,7 +36,7 @@ namespace Repository.Repositories
             return await _entities.FirstOrDefaultAsync(filter, cancellationToken);
         }
 
-        public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default, params Expression<Func<T,
+        public async Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default, params Expression<Func<T,
             object>>[]? includesProperties)
         {
             IQueryable<T>? query = _entities.AsQueryable();
