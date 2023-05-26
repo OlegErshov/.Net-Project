@@ -10,10 +10,11 @@ using Plugin.Tasks;
 using Repository;
 
 using SerializerLib;
+using System.Security.Claims;
 
 namespace WebClient.Pages.Questions
 {
-    [Authorize()]
+    [Authorize(Roles = "TEACHER")]
     public class AddGrammaTaskModel : PageModel
     {
         private IStudentService _studentService;
@@ -32,12 +33,25 @@ namespace WebClient.Pages.Questions
         public Student Student { get; set; }
         public void OnGet(string id)
         {
-            
             Student = _studentService.GetByIdAsync(id).Result;
-            if(Student._GrammaList.Count == 0 || Student._GrammaList.Last().questions == null)
+
+            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(Student.TeacherId)??true)
             {
-                Student._GrammaList.Add(new GrammaTask());
+                if (Student._GrammaList.Count == 0 || Student._GrammaList.Last().questions == null)
+                {
+                    Student._GrammaList.Add(new GrammaTask());
+                    
+                }
+                
             }
+            else
+            {
+                 RedirectToPage("NotFound");
+            }
+
+
+
+          
         }
 
         public List<string> Varients { get; set; }

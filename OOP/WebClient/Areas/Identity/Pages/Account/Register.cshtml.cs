@@ -17,7 +17,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Plugin.Authorization;
 
@@ -25,6 +27,8 @@ namespace WebClient.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
+        private readonly IServiceProvider serviceProvider;
+
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IUserStore<IdentityUser> _userStore;
@@ -37,7 +41,9 @@ namespace WebClient.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IServiceProvider provider
+           )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -45,6 +51,7 @@ namespace WebClient.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            serviceProvider = provider;
         }
 
         /// <summary>
@@ -117,12 +124,26 @@ namespace WebClient.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var roleExist = await RoleManager.RoleExistsAsync("Teacher");
+            if (!roleExist)
+            {
+                var roleResult = await RoleManager.CreateAsync(new IdentityRole("Teacher"));
+            }
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
+                if(Input.user == "isStudent")
+                {
+                    await _userManager.AddToRoleAsync(user, "Student");
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(user, "Teacher");
+                }
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);

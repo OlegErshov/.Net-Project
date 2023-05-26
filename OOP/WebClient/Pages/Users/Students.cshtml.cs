@@ -1,4 +1,5 @@
 using Application.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -6,6 +7,7 @@ using Plugin.Authorization;
 
 namespace WebClient.Pages.Users
 {
+    [Authorize]
     public class StudentsModel : PageModel
     {
 

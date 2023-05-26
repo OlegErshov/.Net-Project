@@ -1,17 +1,21 @@
 using Application.Abstractions;
 using Application.Abstractions.QuestionAbstractions;
 using Application.Abstractions.TaskAbstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Plugin.Authorization;
 using Plugin.Questions;
 using Plugin.Tasks;
+using System.Security.Claims;
 
 namespace WebClient.Pages.Questions
 {
+    [Authorize(Roles = "Teacher")]
     public class AddSentenceTaskModel : PageModel
     {
+        
         private IStudentService _studentService;
 
         private ITaskService<SentenceTask, SentenceQuestion> _sentenceTaskService;
@@ -30,11 +34,19 @@ namespace WebClient.Pages.Questions
         public string Answer { get; set; }
         public void OnGet(string id)
         {
-            Student = _studentService.GetByIdAsync(id).Result;
-            if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
+            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
             {
-                Student._SentenceList.Add(new SentenceTask());
+                Student = _studentService.GetByIdAsync(id).Result;
+                if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
+                {
+                    Student._SentenceList.Add(new SentenceTask());
+                }
             }
+            else
+            {
+                RedirectToPage("NotFound");
+            }
+              
 
             
         }

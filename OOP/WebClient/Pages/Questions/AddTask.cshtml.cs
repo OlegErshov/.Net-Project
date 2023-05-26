@@ -1,11 +1,13 @@
 using Application.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
-
+using System.Security.Claims;
 
 namespace WebClient.Pages.Questions
 {
+    [Authorize(Roles ="TEACHER")]
     public class AddTaskModel : PageModel
     {
         private IStudentService _studentService;
@@ -16,10 +18,19 @@ namespace WebClient.Pages.Questions
         }
 
         [BindProperty]
-        public Student User { get; set; }
+        public Student Student { get; set; }
         public void OnGet(string id)
         {
-            User = _studentService.GetByIdAsync(id).Result;
+            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
+            {
+                Student = _studentService.GetByIdAsync(id).Result;
+                
+            }
+            else
+            {
+                RedirectToPage("NotFound");
+            }
+               
         }
     }
 }

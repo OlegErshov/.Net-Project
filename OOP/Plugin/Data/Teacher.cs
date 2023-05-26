@@ -12,7 +12,7 @@ namespace Plugin.Authorization
 {
     public class Teacher : IdentityUser
     {
-       
+        public IdentityRole role = new IdentityRole("Teacher");
         public List<Student> students { get; set; }
 
         public const string Role = "teacher";

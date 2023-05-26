@@ -23,7 +23,7 @@
                 <div class="card-body text-center">
                    
                     <div class="form-group row">
-                        <label asp-for="Sentence" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                        <label asp-for="Sentence" class="col col-lg-4 col-form-label text-right">Введите предложение:</label>
                         <div class="col-12 col-lg-6">
                             <input asp-for="Sentence" class="form-control mr-2" placeholder="Введите предложение" />
                             <!--Добавляем сообщение валидации формы-->
@@ -32,7 +32,7 @@
                     </div>
 
                      <div class="form-group row">
-                        <label asp-for="AnswerVarients" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                        <label asp-for="AnswerVarients" class="col col-lg-4 col-form-label text-right">Введите варианты ответов:</label>
                         <div class="col-12 col-lg-6">
                             <input asp-for="AnswerVarients" class="form-control mr-2" placeholder="Введите варианты ответов через пробел" />
                             <!--Добавляем сообщение валидации формы-->
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label asp-for="RightAnswer" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                        <label asp-for="RightAnswer" class="col col-lg-4 col-form-label text-right">Введите правильный ответ:</label>
                         <div class="col-12 col-lg-6">
                             <input asp-for="RightAnswer" class="form-control mr-2" placeholder="Введите ответы через пробел" />
                             <!--Добавляем сообщение валидации формы-->
@@ -71,7 +71,7 @@
 
                 <div class="card-body text-center">
                     
-                    @foreach (var item in Model.Student._GrammaList.Last().questions)
+                    @foreach (var item in Model.Student._GrammaList.Last()?.questions)
                     {
                         <div class="row text-center">
                             <label>@item.Sentence</label>

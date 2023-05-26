@@ -1,4 +1,5 @@
 using Application.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plugin.Authorization;
@@ -8,6 +9,7 @@ using SerializerLib;
 
 namespace WebClient.Pages.Users
 {
+    [Authorize(Roles ="TEACHER")]
     public class AddStudentModel : PageModel
     {
         private IStudentService _studentService;
