@@ -11,7 +11,7 @@ namespace Plugin.Authorization
     public class Student : IdentityUser
     {
         public IdentityRole role = new IdentityRole("Student");
-        public string TeacherId { get; set; }
+        public string? TeacherId { get; set; }
         public Student(string email, string login, string password)
         {
             Email = email;

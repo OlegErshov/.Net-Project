@@ -17,6 +17,8 @@ namespace Plugin.Authorization
 
         public const string Role = "teacher";
 
-       
+        public Teacher() {
+            students = new List<Student>();
+        }
     }
 }
