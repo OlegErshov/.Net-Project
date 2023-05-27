@@ -31,5 +31,22 @@ namespace WebClient.Pages.Users
             Teacher teacher = _teacherService.GetByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value).Result;
             Students = teacher.students.ToList();
         }
+
+        public async void OnPostDelete(string id) 
+        {
+            Students = _studentService.GetAllAsync().Result;
+            Teacher teacher = _teacherService.GetByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value).Result;
+
+            Student student = new Student();
+            student = _studentService.GetByIdAsync(id).Result;
+
+            teacher.students.Remove(student);
+            student.TeacherId = null;
+
+            await _teacherService.UpdateAsync(teacher);
+            await _teacherService.SaveChangesAsync();
+            await _studentService.UpdateAsync(student);
+            await _studentService.SaveChangesAsync();
+        }
     }
 }

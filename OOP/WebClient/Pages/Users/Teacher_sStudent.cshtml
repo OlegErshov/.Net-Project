@@ -3,8 +3,8 @@
 @{
 }
 
-
-<div class="row">
+<form method="post">
+    <div class="row">
         @foreach (var item in Model.Students)
         {
             <div class="col-12 col-sm-6 col-lg-3">
@@ -20,9 +20,10 @@
                         </div>
 
                         <div class="card-footer text-center">
-                            <button type="submit" asp-rote-id="@item.Id" class="btn btn-success ">Отчислить</button>
-                            <a asp-page="/Questions/AddTask" asp-route-id="@item.Id" class="btn-success">Добавить заданий</a>
-                            <a asp-page="/Questions/Test" asp-route-id="@item.Id" class="btn-danger">Список заданий</a>
+                            <button type="submit" asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger ">Отчислить</button>
+                            <a asp-page="/Questions/AddTask" asp-route-id="@item.Id" class="btn btn-success">Добавить заданий</a>
+                            <a asp-page="/Questions/Test" asp-route-id="@item.Id" class=" btn btn-primary">Список заданий</a>
+
                         </div>
 
                     </div>
@@ -31,3 +32,4 @@
 
             </div>
         }
+</form>
