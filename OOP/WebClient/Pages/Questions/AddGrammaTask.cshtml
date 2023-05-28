@@ -2,7 +2,14 @@
 @model WebClient.Pages.Questions.AddGrammaTaskModel
 @{
     
-     }
+ }
+
+ @if(Model.Message != null)
+{
+    <div class="alert alert-success text-center" >
+        <label>@Model.Message</label>
+    </div>
+}
 
 <!--Создаём форму редактирования-->
 <form method="post" class="mt-3">

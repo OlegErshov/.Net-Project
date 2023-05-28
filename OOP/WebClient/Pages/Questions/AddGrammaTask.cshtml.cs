@@ -61,7 +61,8 @@ namespace WebClient.Pages.Questions
         public string AnswerVarients { get; set; }
         public string RightAnswer { get; set; }
 
-       
+        [BindProperty]
+        public string Message { get; set; }
 
         public async  Task<IActionResult> OnPostAddTask(string id)
         {
@@ -72,8 +73,12 @@ namespace WebClient.Pages.Questions
             await _taskService.AddAsync(grammaTask);
             await _taskService.SaveChangesAsync();
 
-            string url = Url.Page("Test", new { id = Student.Id });
-            return Redirect(url);
+            Message = "Задание успешно добавлено";
+
+            
+
+            return Page();
+            
         }
 
 
@@ -99,8 +104,8 @@ namespace WebClient.Pages.Questions
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();
 
-            Varients.Add(answerVarients);
-            Answers.Add(rightAnswer);
+            Varients = answerVarients.Split(' ').ToList();
+            Answers = rightAnswer.Split(" ").ToList();
             return Page();
         }
         

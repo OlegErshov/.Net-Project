@@ -59,8 +59,7 @@ namespace WebClient.Pages.Questions
       
         public async Task<IActionResult> OnGet(string id)
         {
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
-            {
+            
                 Student = _studentService.GetByIdAsync(id).Result;
 
                 Student._GrammaList = _grammaTaskService.ListAsync((x) => x.Student.Id == id).Result;
@@ -87,12 +86,7 @@ namespace WebClient.Pages.Questions
                     item.questions = _vocabluaryQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
                 }
                 return Page();
-            }
-            else
-            {
-                return RedirectToPage("NotFound");
-            }
-               
+             
 
            
             
