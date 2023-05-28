@@ -21,15 +21,7 @@ namespace WebClient.Pages.Questions
         public Student Student { get; set; }
         public void OnGet(string id)
         {
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
-            {
-                Student = _studentService.GetByIdAsync(id).Result;
-                
-            }
-            else
-            {
-                RedirectToPage("NotFound");
-            }
+            Student = _studentService.GetByIdAsync(id).Result;
                
         }
     }
