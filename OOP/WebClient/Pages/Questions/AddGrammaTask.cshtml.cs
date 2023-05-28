@@ -1,6 +1,7 @@
 using Application.Abstractions;
 using Application.Abstractions.QuestionAbstractions;
 using Application.Abstractions.TaskAbstractions;
+using Application.Services.QuestionServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -33,25 +34,20 @@ namespace WebClient.Pages.Questions
         public Student Student { get; set; }
         public void OnGet(string id)
         {
-            Student = _studentService.GetByIdAsync(id).Result;
+           
 
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(Student.TeacherId)??true)
-            {
+                Student = _studentService.GetByIdAsync(id).Result;
+                Student._GrammaList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
+
+                Student._GrammaList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._GrammaList.Last().Id).Result;
+
+
                 if (Student._GrammaList.Count == 0 || Student._GrammaList.Last().questions == null)
                 {
                     Student._GrammaList.Add(new GrammaTask());
                     
                 }
-                
-            }
-            else
-            {
-                 RedirectToPage("NotFound");
-            }
 
-
-
-          
         }
 
         public List<string> Varients { get; set; }
@@ -104,8 +100,10 @@ namespace WebClient.Pages.Questions
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();
 
-            Varients = answerVarients.Split(' ').ToList();
-            Answers = rightAnswer.Split(" ").ToList();
+
+            Student._GrammaList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._GrammaList.Last().Id).Result;
+
+
             return Page();
         }
         

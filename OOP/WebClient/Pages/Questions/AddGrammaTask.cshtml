@@ -68,6 +68,11 @@
         </div>
     </div>
 
+
+
+
+
+
     <div class="col justify-content-center m-3">
         <div class="card-deck">
             <div class="card m-3">
@@ -86,7 +91,7 @@
                         
 
                         <div class="row text-center">
-                            @foreach (var word in Model.Varients)
+                            @foreach (var word in item.AnswerVarients.Split(' ').ToList())
                             {
 
                                 <div class="col">
