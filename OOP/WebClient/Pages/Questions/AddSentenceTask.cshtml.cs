@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace WebClient.Pages.Questions
 {
-    [Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "TEACHER")]
     public class AddSentenceTaskModel : PageModel
     {
         
@@ -30,25 +30,24 @@ namespace WebClient.Pages.Questions
 
         public Student Student { get; set; }
 
+        [BindProperty]
+        public string Message { get; set; }
+
         public string Words { get; set; }
         public string Answer { get; set; }
         public void OnGet(string id)
         {
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
-            {
-                Student = _studentService.GetByIdAsync(id).Result;
-                if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
-                {
-                    Student._SentenceList.Add(new SentenceTask());
-                }
-            }
-            else
-            {
-                RedirectToPage("NotFound");
-            }
-              
-
+            Student = _studentService.GetByIdAsync(id).Result;
+            Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
             
+
+            if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
+            {
+                Student._SentenceList.Add(new SentenceTask());
+            }
+            Student._SentenceList.Last().questions = _sentenceQuestionService.ListAsync((x) => x.task.Id == Student._SentenceList.Last().Id).Result;
+
+
         }
 
 
@@ -61,8 +60,9 @@ namespace WebClient.Pages.Questions
             await _sentenceTaskService.AddAsync(sentenceTask);
             await _sentenceTaskService.SaveChangesAsync();
 
-            string url = Url.Page("Test", new { id = Student.Id });
-            return Redirect(url);
+            Message = "Задание успешно добавлено";
+
+            return Page();
         }
 
 
@@ -73,7 +73,10 @@ namespace WebClient.Pages.Questions
 
             Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
 
+            
+            
             SentenceTask sentenceTask;
+
             if (Student._SentenceList.Count == 0)
             {
                 sentenceTask = new SentenceTask() { Student = Student };
@@ -89,6 +92,8 @@ namespace WebClient.Pages.Questions
 
             await _sentenceQuestionService.AddAsync(question);
             await _sentenceQuestionService.SaveChangesAsync();
+
+            Student._SentenceList.Last().questions = _sentenceQuestionService.ListAsync((x) => x.task.Id == Student._SentenceList.Last().Id).Result;
 
         }
 
