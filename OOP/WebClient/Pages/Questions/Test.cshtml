@@ -24,7 +24,7 @@
                                 {
                                     <h5>@ob.Sentence</h5>
 
-                                    @foreach (var word in ob.AnswerVarients)
+                                    @foreach (var word in ob.AnswerVarients.Split(' ').ToList())
                                     {
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -37,7 +37,9 @@
                             <div class="card-footer text-center">
                                 <a href="#" class="btn btn-success">Проверить</a>
                                     <button type="submit" asp-route-id="@Model.Student.Id"
-                                    asp-route-taskId="@Model.Student._GrammaList[i].Id" asp-page-handler="DeleteGramma"
+                                    asp-route-taskId="@Model.Student._GrammaList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteGramma"
                                     class="btn btn-danger ">
                                         Удалить задание
                                 </button>
@@ -86,9 +88,11 @@
                             </div>
 
                             <div class="card-footer text-center">
-                                <a href="#" class="btn-success">Проверить</a>
+                                <a href="#" class=" btn btn-success">Проверить</a>
                                 <button type="submit" asp-route-id="@Model.Student.Id"
-                                    asp-route-taskId="@Model.Student._VocabluaryList[i].Id" asp-page-handler="DeleteVocabluary"
+                                    asp-route-taskId="@Model.Student._VocabluaryList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteVocabluary"
                                     class="btn btn-danger ">
                                         Удалить задание
                                 </button>
@@ -126,7 +130,7 @@
 
 
                                         <div class="col text-center">
-                                            @foreach (var words in ob.Words)
+                                            @foreach (var words in ob.Words.Split(' ').ToList())
                                             {
                                                 <label>@words /</label>
                                             }
@@ -139,9 +143,11 @@
                             </div>
 
                             <div class="card-footer text-center">
-                                <a href="#" class="btn-success">Проверить</a>
+                                <a href="#" class=" btn btn-success">Проверить</a>
                                 <button type="submit" asp-route-id="@Model.Student.Id"
-                                    asp-route-taskId="@Model.Student._SentenceList[i].Id" asp-page-handler="DeleteSentence"
+                                    asp-route-taskId="@Model.Student._SentenceList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteSentence"
                                     class="btn btn-danger ">
                                         Удалить задание
                                 </button>
@@ -168,6 +174,20 @@
 
                                 <div class="col">
                                     <label>Вставьте нужные слова</label>
+                                    @for(int j = 0; j < 1; j++)
+                                    {
+                                        string s = "";
+                                        @foreach (var item in Model.Student._InsertList.Last().questions)
+                                        {
+
+                                            s += item.StringAnswer + "/";
+                                        }
+                                        @foreach (var item in Model.Student._InsertList.Last().words.Split(' '))
+                                        {
+                                            s += item + "/";
+                                        }
+                                        <label>@s</label>
+                                    }
                                 </div>
 
                             </div>
@@ -178,23 +198,21 @@
                                 {
                                     <div class="col">
 
-
                                         <div class="col text-center">
                                             <label>@ob.Sentence /</label>
                                         </div>
 
-
-
                                     </div>
-
 
                                 }
                             </div>
 
                             <div class="card-footer text-center">
-                                <a href="#" class="btn-success">Проверить</a>
+                                <a href="#" class=" btn btn-success">Проверить</a>
                                 <button type="submit" asp-route-id="@Model.Student.Id"
-                                    asp-route-taskId="@Model.Student._InsertList[i].Id" asp-page-handler="DeleteInsert"
+                                    asp-route-taskId="@Model.Student._InsertList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteInsert"
                                     class="btn btn-danger ">
                                         Удалить задание
                                     </button>

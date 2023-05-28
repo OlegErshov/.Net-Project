@@ -54,46 +54,48 @@ namespace WebClient.Pages.Questions
         [BindProperty]
         public Student Student { get; set; }
 
+        private void Update(string id)
+        {
+            Student = _studentService.GetByIdAsync(id).Result;
+
+            Student._GrammaList = _grammaTaskService.ListAsync((x) => x.Student.Id == id).Result;
+            foreach (var item in Student._GrammaList)
+            {
+                item.questions = _grammaQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+            }
+
+            Student._InsertList = _insertTaskService.ListAsync((x) => x.Student.Id == id).Result;
+            foreach (var item in Student._InsertList)
+            {
+                item.questions = _insertQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+            }
+
+            Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == id).Result;
+            foreach (var item in Student._SentenceList)
+            {
+                item.questions = _sentenceQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+            }
+
+            Student._VocabluaryList = _vocabluaryTaskService.ListAsync((x) => x.Student.Id == id).Result;
+            foreach (var item in Student._VocabluaryList)
+            {
+                item.questions = _vocabluaryQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
+            }
+        }
+
         
 
       
         public async Task<IActionResult> OnGet(string id)
         {
-            
-                Student = _studentService.GetByIdAsync(id).Result;
+            Update(id);
 
-                Student._GrammaList = _grammaTaskService.ListAsync((x) => x.Student.Id == id).Result;
-                foreach (var item in Student._GrammaList)
-                {
-                    item.questions = _grammaQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
-                }
-
-                Student._InsertList = _insertTaskService.ListAsync((x) => x.Student.Id == id).Result;
-                foreach (var item in Student._InsertList)
-                {
-                    item.questions = _insertQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
-                }
-
-                Student._SentenceList = _sentenceTaskService.ListAsync((x) => x.Student.Id == id).Result;
-                foreach (var item in Student._SentenceList)
-                {
-                    item.questions = _sentenceQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
-                }
-
-                Student._VocabluaryList = _vocabluaryTaskService.ListAsync((x) => x.Student.Id == id).Result;
-                foreach (var item in Student._VocabluaryList)
-                {
-                    item.questions = _vocabluaryQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
-                }
-
-                return Page();
+            return Page();
              
-
-           
             
         }
 
-        public async Task<IActionResult> OnPostDeleteGramma(int id, int taskId)
+        public async Task<IActionResult> OnPostDeleteGramma(int id, int taskId,string studentId)
         {
             List<int> deletedId = new List<int>();
 
@@ -112,10 +114,12 @@ namespace WebClient.Pages.Questions
             await _grammaQuestionService.SaveChangesAsync();
             await _grammaTaskService.SaveChangesAsync();
 
+            Update(studentId);
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostDeleteVocabluary(int id, int taskId)
+        public async Task<IActionResult> OnPostDeleteVocabluary(int id, int taskId, string studentId)
         {
             List<int> deletedId = new List<int>();
 
@@ -134,11 +138,13 @@ namespace WebClient.Pages.Questions
             await _vocabluaryQuestionService.SaveChangesAsync();
             await _vocabluaryTaskService.SaveChangesAsync();
 
+            Update(studentId);
+
             return Page();
         }
 
 
-        public async Task<IActionResult> OnPostDeleteSentence(int id, int taskId)
+        public async Task<IActionResult> OnPostDeleteSentence(int id, int taskId, string studentId)
         {
             List<int> deletedId = new List<int>();
 
@@ -157,11 +163,13 @@ namespace WebClient.Pages.Questions
             await _sentenceQuestionService.SaveChangesAsync();
             await _sentenceTaskService.SaveChangesAsync();
 
+            Update(studentId);
+
             return Page();
         }
 
 
-        public async Task<IActionResult> OnPostDeleteInsert(int id, int taskId)
+        public async Task<IActionResult> OnPostDeleteInsert(int id, int taskId, string studentId)
         {
             List<int> deletedId = new List<int>();
 
@@ -179,6 +187,8 @@ namespace WebClient.Pages.Questions
             await _insertTaskService.DeleteAsync(task);
             await _insertQuestionService.SaveChangesAsync();
             await _insertTaskService.SaveChangesAsync();
+
+            Update(studentId);
 
             return Page();
         }
