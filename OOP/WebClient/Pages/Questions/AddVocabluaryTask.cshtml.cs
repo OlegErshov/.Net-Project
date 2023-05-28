@@ -1,6 +1,8 @@
 using Application.Abstractions;
 using Application.Abstractions.QuestionAbstractions;
 using Application.Abstractions.TaskAbstractions;
+using Application.Services.QuestionServices;
+using Application.Services.TaskServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -30,23 +32,23 @@ namespace WebClient.Pages.Questions
 
         [BindProperty]
         public Student Student { get; set; }
+
+        [BindProperty]
+        public string Message { get; set; }
+
         public void OnGet(string id)
         {
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
-            {
-                Student = _studentService.GetByIdAsync(id).Result;
-                if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
-                {
-                    Student._VocabluaryList.Add(new VocabluaryTask());
-                }
-            }
-            else
-            {
-                RedirectToPage("NotFound");
-            }
-                
-
             
+            Student = _studentService.GetByIdAsync(id).Result;
+            Student._VocabluaryList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
+
+            if (Student._VocabluaryList.Count == 0 || Student._VocabluaryList.Last().questions == null)
+            {
+                    Student._VocabluaryList.Add(new VocabluaryTask());
+            }
+
+            Student._VocabluaryList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._VocabluaryList.Last().Id).Result;
+
         }
 
         public string Sentence { get; set; }
@@ -63,8 +65,9 @@ namespace WebClient.Pages.Questions
             await _taskService.AddAsync(vocabluaryTask);
             await _taskService.SaveChangesAsync();
 
-            string url = Url.Page("Test", new { id = Student.Id });
-            return Redirect(url);
+            Message = "Задание успешно добавлено";
+
+            return Page();
         }
 
 
@@ -92,7 +95,7 @@ namespace WebClient.Pages.Questions
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();
 
-            
+            Student._VocabluaryList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._VocabluaryList.Last().Id).Result;
         }
     }
 }
