@@ -71,8 +71,7 @@ namespace WebClient.Pages.Questions
 
             Message = "Задание успешно добавлено";
 
-            
-
+       
             return Page();
             
         }
