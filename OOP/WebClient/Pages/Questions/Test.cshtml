@@ -3,195 +3,210 @@
 @{
 }
 
-<input type="hidden" asp-for="Student.Id"/>
+@*<input type="hidden" asp-for="Student.Id"/>*@
 
 <form method="post">
     <div class="row">
-
-        @for (int i = 0; i < Model.Student._GrammaList.Count() - 1; i++)
+        @if (Model.Student._GrammaList.Count() != 0)
         {
+            @for (int i = 0; i < Model.Student._GrammaList.Count() - 1; i++)
+            {
 
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card-deck">
-                    <div class="card m-3">
-                        <div class="card-header text-center">
-                            <h3>Грамматика</h3>
-                        </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Грамматика</h3>
+                            </div>
 
-                        <div class="card-body text-center">
-                            @foreach (var ob in Model.Student._GrammaList[i].questions)
-                            {
-                                <h5>@ob.Sentence</h5>
-
-                                @foreach (var word in ob.AnswerVarients)
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._GrammaList[i].questions)
                                 {
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">@word</label>
-                                    </div>
+                                    <h5>@ob.Sentence</h5>
+
+                                    @foreach (var word in ob.AnswerVarients)
+                                    {
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">@word</label>
+                                        </div>
+                                    }
                                 }
-                            }
-                        </div>
+                            </div>
 
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-success">Проверить</a>
-                            <button type="submit" asp-route-id="@Model.Student.Id"
-                                asp-route-taskId="@Model.Student._GrammaList[i].Id" asp-page-handler="DeleteGramma"
-                                class="btn btn-danger ">
-                                Удалить задание
-                            </button>
-                        </div>
+                            <div class="card-footer text-center">
+                                <a href="#" class="btn btn-success">Проверить</a>
+                                    <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._GrammaList[i].Id" asp-page-handler="DeleteGramma"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                </button>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
+            }
         }
+        
 
-        @for (int i = 0; i < Model.Student._VocabluaryList.Count() - 1; i++)
+        @if (Model.Student._VocabluaryList.Count() != 0)
         {
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card-deck">
-                    <div class="card m-3">
-                        <div class="card-header text-center">
-                            <h3>Vocabluary</h3>
+            @for (int i = 0; i < Model.Student._VocabluaryList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Vocabluary</h3>
 
-                            <div class="col">
-                                <label>Варианты ответа</label>
+                                <div class="col">
+                                    <label>Варианты ответа</label>
+                                </div>
+                                <div class="col">
+                                    @foreach (var ob in Model.Student._VocabluaryList[i].questions)
+                                    {
+                                        <label>@ob.letters /</label>
+                                    }
+                                </div>
+
                             </div>
-                            <div class="col">
+
+                            <div class="card-body text-center">
                                 @foreach (var ob in Model.Student._VocabluaryList[i].questions)
                                 {
-                                    <label>@ob.letters /</label>
+                                    <div class="row">
+                                        <h5>@ob.Text</h5>
+
+                                    </div>
+
                                 }
                             </div>
 
-                        </div>
-
-                        <div class="card-body text-center">
-                            @foreach (var ob in Model.Student._VocabluaryList[i].questions)
-                            {
-                                <div class="row">
-                                    <h5>@ob.Text</h5>
-
-                                </div>
-
-                            }
-                        </div>
-
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn-success">Проверить</a>
-                            <button type="submit" asp-route-id="@Model.Student.Id"
-                                asp-route-taskId="@Model.Student._VocabluaryList[i].Id" asp-page-handler="DeleteVocabluary"
-                                class="btn btn-danger ">
-                                Удалить задание
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        }
-
-        @for (int i = 0; i < Model.Student._SentenceList.Count() - 1; i++)
-        {
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card-deck">
-                    <div class="card m-3">
-                        <div class="card-header text-center">
-                            <h3>Sentence</h3>
-
-                            <div class="col">
-                                <label>Составьте предложения</label>
+                            <div class="card-footer text-center">
+                                <a href="#" class="btn-success">Проверить</a>
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._VocabluaryList[i].Id" asp-page-handler="DeleteVocabluary"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                </button>
                             </div>
 
                         </div>
-
-                        <div class="card-body text-center">
-                            @foreach (var ob in Model.Student._SentenceList[i].questions)
-                            {
-                                <div class="col">
-
-
-                                    <div class="col text-center">
-                                        @foreach (var words in ob.Words)
-                                        {
-                                            <label>@words /</label>
-                                        }
-                                    </div>
-
-                                </div>
-
-
-                            }
-                        </div>
-
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn-success">Проверить</a>
-                            <button type="submit" asp-route-id="@Model.Student.Id"
-                                asp-route-taskId="@Model.Student._SentenceList[i].Id" asp-page-handler="DeleteSentence"
-                                class="btn btn-danger ">
-                                Удалить задание
-                            </button>
-                        </div>
-
                     </div>
                 </div>
-            </div>
 
 
+            }
         }
+        
 
-        @for (int i = 0; i < Model.Student._InsertList.Count() - 1; i++)
+        @if (Model.Student._SentenceList.Count() != 0)
         {
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card-deck">
-                    <div class="card m-3">
-                        <div class="card-header text-center">
-                            <h3>Insert</h3>
+            @for (int i = 0; i < Model.Student._SentenceList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Sentence</h3>
 
-                            <div class="col">
-                                <label>Вставьте нужные слова</label>
+                                <div class="col">
+                                    <label>Составьте предложения</label>
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._SentenceList[i].questions)
+                                {
+                                    <div class="col">
+
+
+                                        <div class="col text-center">
+                                            @foreach (var words in ob.Words)
+                                            {
+                                                <label>@words /</label>
+                                            }
+                                        </div>
+
+                                    </div>
+
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a href="#" class="btn-success">Проверить</a>
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._SentenceList[i].Id" asp-page-handler="DeleteSentence"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                </button>
                             </div>
 
                         </div>
+                    </div>
+                </div>
 
-                        <div class="card-body text-center">
-                            <label>@Model.Student._InsertList[i].words /</label>
-                            @foreach (var ob in Model.Student._InsertList[i].questions)
-                            {
+
+            }
+        }
+       
+
+        @if (Model.Student._InsertList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._InsertList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Insert</h3>
+
                                 <div class="col">
+                                    <label>Вставьте нужные слова</label>
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                <label>@Model.Student._InsertList[i].words /</label>
+                                @foreach (var ob in Model.Student._InsertList[i].questions)
+                                {
+                                    <div class="col">
 
 
-                                    <div class="col text-center">
-                                        <label>@ob.Sentence /</label>
+                                        <div class="col text-center">
+                                            <label>@ob.Sentence /</label>
+                                        </div>
+
+
+
                                     </div>
 
 
+                                }
+                            </div>
 
-                                </div>
+                            <div class="card-footer text-center">
+                                <a href="#" class="btn-success">Проверить</a>
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._InsertList[i].Id" asp-page-handler="DeleteInsert"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                    </button>
+                            </div>
 
-
-                            }
                         </div>
-
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn-success">Проверить</a>
-                            <button type="submit" asp-route-id="@Model.Student.Id"
-                                asp-route-taskId="@Model.Student._VocabluaryList[i].Id" asp-page-handler="DeleteInsert"
-                                class="btn btn-danger ">
-                                Удалить задание
-                            </button>
-                        </div>
-
                     </div>
                 </div>
-            </div>
 
 
+            }
         }
+        
     </div>
 </form>

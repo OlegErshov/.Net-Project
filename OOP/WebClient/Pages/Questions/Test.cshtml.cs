@@ -85,6 +85,7 @@ namespace WebClient.Pages.Questions
                 {
                     item.questions = _vocabluaryQuestionService.ListAsync((x) => x.task.Id == item.Id).Result;
                 }
+
                 return Page();
              
 
