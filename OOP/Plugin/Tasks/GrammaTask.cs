@@ -14,6 +14,7 @@ namespace Plugin.Tasks
     {
         
         public Student Student { get; set; }
+        
         public GrammaTask() {
             questions = new List<GrammaQuestion>();
         }
