@@ -3,6 +3,13 @@
 @{
 }
 
+@if (Model.Message != null)
+{
+    <div class="alert alert-success text-center">
+        <label>@Model.Message</label>
+    </div>
+}
+
 <form method="post" class="mt-3" asp-page-handler="Test">
     <!--Создаём скрытое поле для параметра ID-->
     <input type="hidden" asp-for="Student.Id" />
@@ -61,10 +68,22 @@
                         <label>Варианты ответа</label>
                     </div>
                     <div class="col">
-                        @foreach (var item in Model.Student._InsertList.Last().questions)
+                        
+                        @for(int i = 0; i < 1; i++)
                         {
-                            <label>@item.StringAnswer /</label>
+                            string s = "";
+                            @foreach (var item in Model.Student._InsertList.Last().questions)
+                            {
+
+                                s += item.StringAnswer + "/";
+                            }
+                            @foreach (var item in Model.Student._InsertList.Last().words.Split(' '))
+                            {
+                                s += item + "/";
+                            }
+                            <label>@s</label>
                         }
+                       
                     </div>
 
                 </div>
@@ -83,7 +102,7 @@
                 <div class="card-footer text-center mg-3">
                         <div class="col-12 col-lg-6 m-3">
                             <input asp-for="Varients" class="form-control mr-2" placeholder="Введите варианты ответов" />
-                            <!--Добавляем сообщение валидации формы-->
+                            <button type="submit" asp-route-id="@Model.Student.Id"  asp-page-handler="AddVarients" class="btn btn-success m-3 " >Добавить</button>
 
                         </div>
 

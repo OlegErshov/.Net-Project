@@ -27,19 +27,24 @@ namespace WebClient.Pages.Questions
         }
 
         public Student Student { get; set; }
+
+        [BindProperty]
+        public string Message { get; set; }
+
+
         public void OnGet(string id)
         {
 
-            
-                Student = _studentService.GetByIdAsync(id).Result;
-                if (Student._InsertList.Count == 0 || Student._InsertList.Last().questions == null)
-                {
-                    Student._InsertList.Add(new InsertTask());
-                }
-            
+            Student = _studentService.GetByIdAsync(id).Result;
+            Student._InsertList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
+
+            Student._InsertList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._InsertList.Last().Id).Result;
             
                
-
+            if (Student._InsertList.Count == 0 || Student._InsertList.Last().questions == null)
+            {
+                    Student._InsertList.Add(new InsertTask());
+            }
             
         }
 
@@ -52,18 +57,16 @@ namespace WebClient.Pages.Questions
 
         public async Task<IActionResult> OnPostAddTask(string id)
         {
-
             Student = _studentService.GetByIdAsync(id).Result;
-
-            Student._InsertList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
-            Student._InsertList.Last().words = Varients;
 
             InsertTask insertTask = new InsertTask() { Student = Student };
             await _taskService.AddAsync(insertTask);
             await _taskService.SaveChangesAsync();
-                
-            string url = Url.Page("Test", new { id = Student.Id });
-            return Redirect(url);
+
+            Message = "Задание успешно добавлено";
+
+
+            return Page();
         }
 
 
@@ -87,8 +90,29 @@ namespace WebClient.Pages.Questions
                 task = _taskService.FirstOrDefaultAsync((x) => x.Id == Student._InsertList.Last().Id).Result
             };
 
+
+
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();
+
+            Student._InsertList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._InsertList.Last().Id).Result;
+        }
+
+
+        public async void OnPostAddVarients(string id)
+        {
+            Student = _studentService.GetByIdAsync(id).Result;
+
+            Student._InsertList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
+
+            Student._InsertList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._InsertList.Last().Id).Result;
+
+            Student._InsertList.Last().words += " " + Varients;
+
+            await _taskService.UpdateAsync(Student._InsertList.Last());
+            await _taskService.SaveChangesAsync();
+
+            Student._InsertList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
         }
     }
 }

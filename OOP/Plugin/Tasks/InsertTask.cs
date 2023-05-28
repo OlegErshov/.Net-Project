@@ -13,12 +13,13 @@ namespace Plugin.Tasks
     public class InsertTask : TaskTemplate<InsertQuestion>
     {
        
-        public string? words { get; set; }
+        public string? words  { get; set; }
         public Student Student { get; set; }
 
         public InsertTask()
         {
             questions = new List<InsertQuestion>();
+            words = "";
         }
         public void addQuestion(string sentence, string word)
         {
