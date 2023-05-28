@@ -30,18 +30,14 @@ namespace WebClient.Pages.Questions
         public void OnGet(string id)
         {
 
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value.Equals(id) ?? true)
-            {
+            
                 Student = _studentService.GetByIdAsync(id).Result;
                 if (Student._InsertList.Count == 0 || Student._InsertList.Last().questions == null)
                 {
                     Student._InsertList.Add(new InsertTask());
                 }
-            }
-            else
-            {
-                RedirectToPage("NotFound");
-            }
+            
+            
                
 
             

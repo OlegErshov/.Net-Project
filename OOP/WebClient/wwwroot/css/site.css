@@ -18,5 +18,14 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #FBF7EE;
+}
+
+.bg-color{
+    background-color: #FBF7EE;
+}
+
+container{
+    background-color: #FBF7EE;
 }
