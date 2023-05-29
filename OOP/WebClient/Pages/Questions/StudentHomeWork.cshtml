@@ -86,14 +86,14 @@
                             </div>
 
                             <div class="card-footer text-center">
-                                
-                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                <a asp-page="/Cheack/CheckSentenceTask" asp-route-id="@Model.Student._VocabluaryList[i].Id" class=" btn btn-primary">Решить</a>
+                                @*<button type="submit" asp-route-id="@Model.Student.Id"
                                 asp-route-taskId="@Model.Student._VocabluaryList[i].Id"
                                 asp-route-studentId="@Model.Student.Id"
                                 asp-page-handler="CheakVocabluary"
                                 class="btn btn-primary ">
                                      Проверить задание
-                                </button>
+                                </button>*@
                             </div>
 
                         </div>
@@ -206,14 +206,14 @@
                             </div>
 
                             <div class="card-footer text-center">
-                                
-                                <button type="submit"
+                                <a asp-page="/Cheack/CheckInsertTask" asp-route-id="@Model.Student._InsertList[i].Id" class=" btn btn-primary">Решить</a>
+                                @*<button type="submit"
                                 asp-route-taskId="@Model.Student._InsertList[i].Id"
                                 asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value"
                                 asp-page-handler="CheakInsert"
                                 class="btn btn-primary ">
                                     Проверить задание
-                                </button>
+                                </button>*@
                             </div>
 
                         </div>
