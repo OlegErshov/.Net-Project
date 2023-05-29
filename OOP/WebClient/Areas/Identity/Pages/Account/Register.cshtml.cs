@@ -130,6 +130,11 @@ namespace WebClient.Areas.Identity.Pages.Account
             {
                 var roleResult = await RoleManager.CreateAsync(new IdentityRole("Teacher"));
             }
+            roleExist = await RoleManager.RoleExistsAsync("STUDENT");
+            if (!roleExist)
+            {
+                var roleResult = await RoleManager.CreateAsync(new IdentityRole("STUDENT"));
+            }
 
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -138,7 +143,7 @@ namespace WebClient.Areas.Identity.Pages.Account
                 var user = CreateUser();
                 if(Input.user == "isStudent")
                 {
-                    await _userManager.AddToRoleAsync(user, "Student");
+                    await _userManager.AddToRoleAsync(user, "STUDENT");
                 }
                 else
                 {

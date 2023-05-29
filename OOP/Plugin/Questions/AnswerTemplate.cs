@@ -13,5 +13,7 @@ namespace Plugin.Questions
         [AutoIncrement]
         public int Id { get; set; }
 
+        public int RightOrNot { get; set; } = 0; // 0 - no answer 1 - right answer -1  - wrong answer
+
     }
 }

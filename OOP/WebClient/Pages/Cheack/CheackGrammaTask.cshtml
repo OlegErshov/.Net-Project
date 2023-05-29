@@ -1,0 +1,60 @@
+﻿@page
+@model WebClient.Pages.Cheack.CheackGrammaTaskModel
+@{
+}
+
+
+<form method="post">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-deck">
+            <div class="card m-3">
+                <div class="card-header text-center">
+                    <h3>Грамматика</h3>
+                </div>
+
+                <div class="card-body text-center">
+                    @foreach (var ob in Model.task.questions)
+                    {
+                        if(ob.RightOrNot == 1)
+                        {
+                            <h5 class="succesAnswer">@ob.Sentence</h5>
+                        }
+                        else if (ob.RightOrNot == -1)
+                        {
+                            <h5 class="wrongAnswer">@ob.Sentence</h5>
+                        }
+                        else{
+
+                            <h5>@ob.Sentence</h5>
+                        }
+
+                        @for (int j = 0; j < ob.AnswerVarients.Split(' ').ToList().Count(); j++)
+                        {
+
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="varients" id="inlineCheckbox1" value="@ob.AnswerVarients.Split(' ').ToList()[j]">
+                                <label class="form-check-label" for="inlineCheckbox1">@ob.AnswerVarients.Split(' ').ToList()[j]</label>
+                            </div>
+
+                        }
+                    }
+                        
+                        
+                </div>
+
+                <div class="card-footer text-center">
+                    <button type="submit" asp-route-id="@Model.task.Id"
+                            
+                            asp-page-handler="Cheak"
+                            class="btn btn-primary ">
+                        Проверить задание
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+

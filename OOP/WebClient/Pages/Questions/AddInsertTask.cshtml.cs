@@ -38,14 +38,13 @@ namespace WebClient.Pages.Questions
             Student = _studentService.GetByIdAsync(id).Result;
             Student._InsertList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
 
-            Student._InsertList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._InsertList.Last().Id).Result;
-            
                
             if (Student._InsertList.Count == 0 || Student._InsertList.Last().questions == null)
             {
                     Student._InsertList.Add(new InsertTask());
             }
-            
+            Student._InsertList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._InsertList.Last().Id).Result;
+
         }
 
         [BindProperty]
