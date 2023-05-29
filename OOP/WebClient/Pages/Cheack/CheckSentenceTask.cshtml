@@ -1,0 +1,57 @@
+﻿@page
+@model WebClient.Pages.Cheack.CheckSentenceTaskModel
+@{
+}
+
+
+<form method="post">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-deck">
+            <div class="card m-3">
+                <div class="card-header text-center">
+                    <h3>Грамматика</h3>
+                </div>
+
+                <div class="card-body text-center">
+                    @foreach (var ob in Model.task.questions)
+                    {
+                        if (ob.RightOrNot == 1)
+                        {
+                            <h5 class="succesAnswer">@ob.Words</h5>
+                        }
+                        else if (ob.RightOrNot == -1)
+                        {
+                            <h5 class="wrongAnswer">@ob.Words</h5>
+                        }
+                        else
+                        {
+
+                            <h5>@ob.Words</h5>
+                        }
+
+                        <div class="form-group row">
+                            
+                            <div class="col">
+                                <input asp-for="StudentAnswer" class="form-control mr-2" placeholder="напишите предложение из слов выше" />
+
+
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+                <div class="card-footer text-center">
+                    <button type="submit" asp-route-id="@Model.task.Id"
+                            asp-page-handler="Check"
+                            class="btn btn-primary ">
+                        Проверить задание
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

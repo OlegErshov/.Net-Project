@@ -141,14 +141,14 @@
                             </div>
 
                             <div class="card-footer text-center">
-                                
-                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                <a asp-page="/Cheack/CheckSentenceTask" asp-route-id="@Model.Student._SentenceList[i].Id" class=" btn btn-primary">Решить</a>
+                                @*<button type="submit" asp-route-id="@Model.Student.Id"
                                 asp-route-taskId="@Model.Student._SentenceList[i].Id"
                                 asp-route-studentId="@Model.Student.Id"
                                 asp-page-handler="CheakSentence"
                                 class="btn btn-primary ">
                                     Проверить задание
-                                </button>
+                                </button>*@
                             </div>
 
                         </div>
