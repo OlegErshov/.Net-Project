@@ -22,7 +22,19 @@
                             <div class="card-body text-center">
                                 @foreach (var ob in Model.Student._GrammaList[i].questions)
                                 {
-                                    <h5>@ob.Sentence</h5>
+                                    if (ob.RightOrNot == 1)
+                                    {
+                                        <h5 class="succesAnswer">@ob.Sentence</h5>
+                                    }
+                                    else if (ob.RightOrNot == -1)
+                                    {
+                                        <h5 class="wrongAnswer">@ob.Sentence</h5>
+                                    }
+                                    else
+                                    {
+
+                                        <h5>@ob.Sentence</h5>
+                                    }
 
                                     @foreach (var word in ob.AnswerVarients.Split(' ').ToList())
                                     {
@@ -79,10 +91,19 @@
                             <div class="card-body text-center">
                                 @foreach (var ob in Model.Student._VocabluaryList[i].questions)
                                 {
-                                    <div class="row">
-                                        <h5>@ob.Text</h5>
+                                    if (ob.RightOrNot == 1)
+                                        {
+                                        <h5 class="succesAnswer">@ob.Text</h5>
+                                        }
+                                        else if (ob.RightOrNot == -1)
+                                        {
+                                        <h5 class="wrongAnswer">@ob.Text</h5>
+                                        }
+                                        else
+                                        {
 
-                                    </div>
+                                        <h5>@ob.Text</h5>
+                                        }
 
                                 }
                             </div>
@@ -126,17 +147,19 @@
                             <div class="card-body text-center">
                                 @foreach (var ob in Model.Student._SentenceList[i].questions)
                                 {
-                                    <div class="col">
+                                    if (ob.RightOrNot == 1)
+                                    {
+                                        <h5 class="succesAnswer">@ob.Words</h5>
+                                    }
+                                    else if (ob.RightOrNot == -1)
+                                    {
+                                        <h5 class="wrongAnswer">@ob.Words</h5>
+                                    }
+                                    else
+                                    {
 
-
-                                        <div class="col text-center">
-                                            @foreach (var words in ob.Words.Split(' ').ToList())
-                                            {
-                                                <label>@words /</label>
-                                            }
-                                        </div>
-
-                                    </div>
+                                        <h5>@ob.Words</h5>
+                                    }
 
 
                                 }
@@ -173,36 +196,42 @@
                                 <h3>Insert</h3>
 
                                 <div class="col">
-                                    <label>Вставьте нужные слова</label>
+                                    <h5>Вставьте нужные слова</h5>
                                     @for(int j = 0; j < 1; j++)
                                     {
                                         string s = "";
-                                        @foreach (var item in Model.Student._InsertList.Last().questions)
+                                        @foreach (var item in Model.Student._InsertList[i].questions)
                                         {
 
                                             s += item.StringAnswer + "/";
                                         }
-                                        @foreach (var item in Model.Student._InsertList.Last().words.Split(' '))
+                                        @foreach (var item in Model.Student._InsertList[i].words.Split(' '))
                                         {
                                             s += item + "/";
                                         }
-                                        <label>@s</label>
+                                        <h5>@s</h5>
                                     }
                                 </div>
 
                             </div>
 
                             <div class="card-body text-center">
-                                <label>@Model.Student._InsertList[i].words /</label>
+                               
                                 @foreach (var ob in Model.Student._InsertList[i].questions)
                                 {
-                                    <div class="col">
 
-                                        <div class="col text-center">
-                                            <label>@ob.Sentence /</label>
-                                        </div>
-
-                                    </div>
+                                    if (ob.RightOrNot == 1)
+                                    {
+                                        <h5 class="succesAnswer">@ob.Sentence /</h5>
+                                    }
+                                    else if (ob.RightOrNot == -1)
+                                    {
+                                        <h5 class="wrongAnswer">@ob.Sentence /</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5>@ob.Sentence /</h5>
+                                    }
 
                                 }
                             </div>
