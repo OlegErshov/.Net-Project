@@ -39,15 +39,13 @@ namespace WebClient.Pages.Questions
                 Student = _studentService.GetByIdAsync(id).Result;
                 Student._GrammaList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
 
-                Student._GrammaList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._GrammaList.Last().Id).Result;
-
 
                 if (Student._GrammaList.Count == 0 || Student._GrammaList.Last().questions == null)
                 {
                     Student._GrammaList.Add(new GrammaTask());
                     
                 }
-
+            Student._GrammaList.Last().questions = _questionService.ListAsync((x) => x.task.Id == Student._GrammaList.Last().Id).Result;
         }
 
         public List<string> Varients { get; set; }
@@ -84,6 +82,7 @@ namespace WebClient.Pages.Questions
 
             Student._GrammaList = _taskService.ListAsync((x) => x.Student.Id == Student.Id).Result;
 
+
             GrammaTask grammaTask;
             if (Student._GrammaList.Count == 0)
             {
@@ -94,7 +93,9 @@ namespace WebClient.Pages.Questions
            
 
             GrammaQuestion question = new GrammaQuestion(sentence, answerVarients, rightAnswer) { 
-                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last().Id).Result };
+                task = _taskService.FirstOrDefaultAsync((x) =>x.Id == Student._GrammaList.Last().Id).Result 
+            
+            };
 
             await _questionService.AddAsync(question);
             await _questionService.SaveChangesAsync();

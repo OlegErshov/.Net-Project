@@ -1,0 +1,228 @@
+﻿@page
+@using System.Security.Claims;
+@model WebClient.Pages.Questions.StudentHomeWorkModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        @if (Model.Student._GrammaList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._GrammaList.Count() - 1; i++)
+            {
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Грамматика</h3>
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._GrammaList[i].questions)
+                                {
+                                    <h5>@ob.Sentence</h5>
+                                    
+
+                                    @for (int j = 0; j < ob.AnswerVarients.Split(' ').ToList().Count();j++)
+                                    {
+
+                                        
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="varients" id="inlineCheckbox1" value="@ob.AnswerVarients.Split(' ').ToList()[i]">
+                                            <label class="form-check-label" for="inlineCheckbox1">@ob.AnswerVarients.Split(' ').ToList()[i]</label>
+                                        </div>
+                                        
+                                    }
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a asp-page="/Cheack/CheackGrammaTask" asp-route-id="@Model.Student._GrammaList[i].Id" class=" btn btn-primary">Решить</a>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+
+        @if (Model.Student._VocabluaryList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._VocabluaryList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Vocabluary</h3>
+
+                                <div class="col">
+                                    <label>Варианты ответа</label>
+                                </div>
+                                <div class="col">
+                                    @foreach (var ob in Model.Student._VocabluaryList[i].questions)
+                                    {
+                                        <label>@ob.letters /</label>
+                                    }
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._VocabluaryList[i].questions)
+                                {
+                                    <div class="row">
+                                        <h5>@ob.Text</h5>
+
+                                    </div>
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                asp-route-taskId="@Model.Student._VocabluaryList[i].Id"
+                                asp-route-studentId="@Model.Student.Id"
+                                asp-page-handler="CheakVocabluary"
+                                class="btn btn-primary ">
+                                     Проверить задание
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+
+        @if (Model.Student._SentenceList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._SentenceList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Sentence</h3>
+
+                                <div class="col">
+                                    <label>Составьте предложения</label>
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._SentenceList[i].questions)
+                                {
+                                    <div class="col">
+
+
+                                        <div class="col text-center">
+                                            @foreach (var words in ob.Words.Split(' ').ToList())
+                                            {
+                                                <label>@words /</label>
+                                            }
+                                        </div>
+
+                                    </div>
+
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                asp-route-taskId="@Model.Student._SentenceList[i].Id"
+                                asp-route-studentId="@Model.Student.Id"
+                                asp-page-handler="CheakSentence"
+                                class="btn btn-primary ">
+                                    Проверить задание
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+
+        @if (Model.Student._InsertList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._InsertList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Insert</h3>
+
+                                <div class="col">
+                                    <label>Вставьте нужные слова</label>
+                                    @for (int j = 0; j < 1; j++)
+                                    {
+                                        string s = "";
+                                        @foreach (var item in Model.Student._InsertList.Last().questions)
+                                        {
+
+                                            s += item.StringAnswer + "/";
+                                        }
+                                        @foreach (var item in Model.Student._InsertList.Last().words.Split(' '))
+                                        {
+                                            s += item + "/";
+                                        }
+                                        <label>@s</label>
+                                    }
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                <label>@Model.Student._InsertList[i].words /</label>
+                                @foreach (var ob in Model.Student._InsertList[i].questions)
+                                {
+                                    <div class="col">
+
+                                        <div class="col text-center">
+                                            <label>@ob.Sentence /</label>
+                                        </div>
+
+                                    </div>
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                
+                                <button type="submit"
+                                asp-route-taskId="@Model.Student._InsertList[i].Id"
+                                asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value"
+                                asp-page-handler="CheakInsert"
+                                class="btn btn-primary ">
+                                    Проверить задание
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+    </div>
+</form>

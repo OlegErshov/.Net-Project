@@ -10,17 +10,17 @@ namespace Plugin.Authorization
 {
     public class Student : IdentityUser
     {
-        public IdentityRole role = new IdentityRole("Student");
+        public List<Mark> Marks { get; set; }
         public string? TeacherId { get; set; }
         public Student(string email, string login, string password)
         {
             Email = email;
             UserName = login;
             PasswordHash = password;
-            
+
         }
-        
-       
+
+
         public Student(string email, string login, string password, string teacherId)
         {
             Email = email;
@@ -28,7 +28,7 @@ namespace Plugin.Authorization
             PasswordHash = password;
             TeacherId = teacherId;
         }
-       
+
 
         public Student() { }
 
@@ -38,4 +38,17 @@ namespace Plugin.Authorization
         public List<VocabluaryTask>? _VocabluaryList { get; set; } = new List<VocabluaryTask>();
 
     }
+
+    public class Mark
+    {
+        public int mark { get; set; }
+        public int Id { get; set; }
+        public Student Student { get; set; }
+        public Mark(int mark)
+        {
+            this.mark = mark;
+        }
+        public Mark() { }
+    }
+    
 }
