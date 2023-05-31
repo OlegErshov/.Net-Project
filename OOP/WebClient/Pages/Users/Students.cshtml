@@ -1,0 +1,50 @@
+﻿@page
+@model WebClient.Pages.Users.StudentsModel
+@{
+    ViewData["Title"] = "User Account";
+}
+
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input class="form-control" asp-for="SearhTerm"/>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </div>
+    </div>
+</form>
+
+
+<form method="post">
+
+    <div class="row">
+        @foreach (var item in Model.Users)
+        {
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="card-deck">
+                    <div class="card m-3">
+
+                        <div class="card-header text-center">
+                            <h5>Login : @item.UserName </h5>
+                        </div>
+
+                        <div class="card-body text-center">
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <button type="submit" asp-route-studentId="@item.Id" class="btn btn-success ">Добавить в свою группу</button>
+                           @* <a asp-page="/Questions/AddTask" asp-route-id="@item.Id" class="btn-success">Добавить заданий</a>
+                            <a asp-page="/Questions/Test" asp-route-id="@item.Id" class="btn-danger">Список заданий</a>*@
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        }
+
+    </div>
+</form>
+
+

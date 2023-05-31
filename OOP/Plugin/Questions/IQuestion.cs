@@ -8,7 +8,9 @@ namespace Plugin.Questions
 {
     public interface IQuestion
     {
-        public bool Cheak(AnswerTemplate answer);
+
+        bool Cheak(AnswerTemplate answer);
+
 
     }
 }

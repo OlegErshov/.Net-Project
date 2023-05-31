@@ -1,5 +1,9 @@
-﻿using Plugin.Questions;
+
+﻿using Plugin.Authorization;
+using Plugin.Questions;
 using Plugin.QuestionsFabrics;
+using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +12,28 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
-    public class GrammaTask
+
+    public class GrammaTask : TaskTemplate<GrammaQuestion>
     {
+        
+        public Student Student { get; set; }
+        
+        public GrammaTask() {
+            questions = new List<GrammaQuestion>();
+        }
 
-        List<IQuestion> questions { get; set; }
-
-        void AddQuestion(string sent, List<string> varients, List<string> answer)
+        public void AddQuestion(string sent, string varients, string answer)
         {
-            QuestionTemplate ques = new QuestionTemplate();
-            ques.GrammaQuestion(sent, varients, answer);
-            GrammaFabric grammaFabric = new GrammaFabric();
+           //QuestionTemplate ques = new QuestionTemplate();
+            //ques.GrammaQuestion(sent, varients, answer);
+          //  GrammaFabric grammaFabric = new GrammaFabric();
 
-            questions.Add(grammaFabric.Create(ques));
+            GrammaQuestion gr = new GrammaQuestion(sent, varients, answer);
+            if(questions == null) { 
+                questions = new List<GrammaQuestion>();
+            }
+            questions?.Add(gr);
+
         }
 
 

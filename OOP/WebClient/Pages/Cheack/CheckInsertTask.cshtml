@@ -1,0 +1,75 @@
+﻿@page
+@model WebClient.Pages.Cheack.CheckInsertTaskModel
+@{
+}
+
+
+<form method="post">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card-deck">
+            <div class="card m-3">
+                <div class="card-header text-center">
+                    <h3>Insert</h3>
+
+                    <div class="col">
+                        <label>Вставьте нужные слова</label>
+                        @for (int j = 0; j < 1; j++)
+                        {
+                            string s = "";
+                            @foreach (var item in Model.Student._InsertList.Last().questions)
+                            {
+
+                                s += item.StringAnswer + "/";
+                            }
+                            @foreach (var item in Model.Student._InsertList.Last().words.Split(' '))
+                            {
+                                s += item + "/";
+                            }
+                            <label>@s</label>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="card-body text-center">
+                    @*<label>@Model.task.words /</label>*@
+                    @foreach (var ob in Model.task.questions)
+                    {
+                                if (ob.RightOrNot == 1)
+                                {
+                                    <label class="succesAnswer">@ob.Sentence /</label>
+                                }
+                                else if (ob.RightOrNot == -1)
+                                {
+                                    <label class="wrongAnswer">@ob.Sentence /</label>
+                                }
+                                else
+                                {
+
+                                         <label>@ob.Sentence /</label>
+                                }
+                               
+
+                            
+                            <div class="col text-center">
+                                <input asp-for="StudentAnswer" class="form-control mr-2" placeholder="Напишите одно слово из вариантов ответа" />
+                            </div>
+
+                        
+
+                    }
+                </div>
+
+                <div class="card-footer text-center">
+
+                    <button type="submit" asp-route-id="@Model.task.Id"
+                            asp-page-handler="Check"
+                            class="btn btn-primary ">
+                        Проверить задание
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

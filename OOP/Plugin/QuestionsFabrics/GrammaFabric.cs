@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace Plugin.QuestionsFabrics
 {
-    public class GrammaFabric : IQuestionFabric
+
+    public class GrammaFabric
     {
-        public IQuestion Create(QuestionTemplate question)
-        {
-            GrammaQuestion q = new GrammaQuestion(question.Sentence, question.AnswerVarients, question.rightAnswer);
-            return q;
-        }
+
+
     }
 }

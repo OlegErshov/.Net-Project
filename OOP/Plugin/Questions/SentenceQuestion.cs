@@ -1,4 +1,7 @@
-﻿using System;
+
+﻿using Plugin.Tasks;
+using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,23 +9,33 @@ using System.Threading.Tasks;
 
 namespace Plugin.Questions
 {
-    internal class SentenceQuestion : IQuestion
+
+    public class SentenceQuestion : AnswerTemplate
     {
         // вопрос для граммаики, приведен список слов основных и нужно добавить грам структуры для формирования предложения
-        public List<string>? Words { get; set; }
+        
+        public string Words { get; set; }
+        public SentenceTask task { get; set; }
+        
 
-        public string? Answer { get; set; }
-
-        public SentenceQuestion(List<string> words, string answer)
+        public SentenceQuestion(string words, string stringAnswer)
         {
             Words = words;
-            Answer = answer;
+            StringAnswer = stringAnswer;
+        }
+
+        public SentenceQuestion()
+        {
+
+
         }
 
         public bool Cheak(AnswerTemplate ans)
         {
             string str = ans.StringAnswer;
-            if (str == Answer) return true;
+
+            //if (str == Answer) return true;
+
             return false;
         }
 

@@ -1,0 +1,107 @@
+﻿@page
+@model WebClient.Pages.Questions.AddVocabluaryTaskModel
+@{
+}
+
+@if (Model.Message != null)
+{
+    <div class="alert alert-success text-center">
+        <label>@Model.Message</label>
+    </div>
+}
+
+<form method="post" class="mt-3">
+    <!--Создаём скрытое поле для параметра ID-->
+    <input type="hidden" asp-for="Student.Id" />
+
+    <!--Добавляем поля редактирования-->
+
+
+    <div class="col justify-content-center m-3">
+        <div class="card-deck">
+            <div class="card m-3">
+
+                <div class="card-header">
+                    <label>Добавление вопроса</label>
+                </div>
+
+                <div class="card-body text-center">
+
+                    <div class="form-group row">
+                        <label asp-for="Sentence" class="col col-lg-4 col-form-label text-right">Введите предложение с пропущенным словом:</label>
+                        <div class="col-12 col-lg-6">
+                            <input asp-for="Sentence" class="form-control mr-2" placeholder="Введите предложение" />
+                            <!--Добавляем сообщение валидации формы-->
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="MixedAnswer" class="col col-lg-4 col-form-label text-right">Введите ответ с перемешанными буквами:</label>
+                        <div class="col-12 col-lg-6">
+                            <input asp-for="MixedAnswer" class="form-control mr-2" placeholder="Введите слово с перемешанными буквами" />
+                            <!--Добавляем сообщение валидации формы-->
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Answer" class="col col-lg-4 col-form-label text-right">Введите ответ:</label>
+                        <div class="col-12 col-lg-6">
+                            <input asp-for="Answer" class="form-control mr-2" placeholder="Введите ответ" />
+                            <!--Добавляем сообщение валидации формы-->
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="card-footer text-center">
+                    @*  <a asp-page="/Questions/AddGrammaTask" asp-route-id="@Model.User.id" class="btn-success">добавить вопрос</a>*@
+                    <button type="submit" class="btn btn-success ">Update</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col justify-content-center m-3">
+        <div class="card-deck">
+            <div class="card m-3">
+
+                <div class="card-header">
+                    <label>Словарь</label>
+
+                    <div class="col">
+                        <label>Варианты ответа</label>
+                    </div>
+                    <div class="col">
+                        @foreach (var item in Model.Student._VocabluaryList.Last().questions)
+                        {
+                            <label>@item.letters /</label>
+                        }
+                    </div>
+                   
+                </div>
+
+                <div class="card-body text-center">
+
+                    @foreach (var item in Model.Student._VocabluaryList.Last().questions)
+                    {
+                        <div class="row text-center">
+                            <label>@item.Text</label>
+                        </div>
+
+                    }
+                </div>
+
+                <div class="card-footer text-center">
+                    <button type="submit" asp-route-id="@Model.Student.Id" asp-page-handler="AddTask" class="btn btn-success ">Добавить задание</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>

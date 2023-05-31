@@ -1,4 +1,6 @@
-﻿using System;
+
+using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +10,12 @@ namespace Plugin.Questions
 {
     public class AnswerTemplate
     {
-        public string StringAnswer { get; }
 
-        public List<string> StringListAnswer { get; }
+        public string StringAnswer { get; set; }
+        [AutoIncrement]
+        public int Id { get; set; }
 
-        public List<int> IntListAnswer { get; }
+        public int RightOrNot { get; set; } = 0; // 0 - no answer 1 - right answer -1  - wrong answer
 
     }
 }

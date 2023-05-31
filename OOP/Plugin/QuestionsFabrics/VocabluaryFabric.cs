@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Plugin.QuestionsFabrics
 {
-    public class VocabluaryFabric : IQuestionFabric
+
+    public class VocabluaryFabric 
     {
-        public IQuestion Create(QuestionTemplate question)
-        {
-            VocabluaryQuestion q = new VocabluaryQuestion(question.Sentence, question.letters, question.Answer);
-            return q;
-        }
+        //public IQuestion Create(QuestionTemplate question)
+        //{
+        //    VocabluaryQuestion q = new VocabluaryQuestion(question.Sentence, question.letters, question.Answer);
+        //    return q;
+        //}
+
     }
 }

@@ -18,5 +18,24 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+
+    margin-bottom: 60px;
+    background-color: #FBF7EE;
 }
+
+.succesAnswer {
+    background: green;
+}
+
+.wrongAnswer {
+    background: red;
+}
+
+.bg-color{
+    background-color: #FBF7EE;
+}
+
+container{
+    background-color: #FBF7EE;
+}
+

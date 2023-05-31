@@ -1,0 +1,259 @@
+﻿@page
+@model WebClient.Pages.Questions.TestModel
+@{
+}
+
+@*<input type="hidden" asp-for="Student.Id"/>*@
+
+<form method="post">
+    <div class="row">
+        @if (Model.Student._GrammaList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._GrammaList.Count() - 1; i++)
+            {
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Грамматика</h3>
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._GrammaList[i].questions)
+                                {
+                                    if (ob.RightOrNot == 1)
+                                    {
+                                        <h5 class="succesAnswer">@ob.Sentence</h5>
+                                    }
+                                    else if (ob.RightOrNot == -1)
+                                    {
+                                        <h5 class="wrongAnswer">@ob.Sentence</h5>
+                                    }
+                                    else
+                                    {
+
+                                        <h5>@ob.Sentence</h5>
+                                    }
+
+                                    @foreach (var word in ob.AnswerVarients.Split(' ').ToList())
+                                    {
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">@word</label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a href="#" class="btn btn-success">Проверить</a>
+                                    <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._GrammaList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteGramma"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+        
+
+        @if (Model.Student._VocabluaryList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._VocabluaryList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Vocabluary</h3>
+
+                                <div class="col">
+                                    <label>Варианты ответа</label>
+                                </div>
+                                <div class="col">
+                                    @foreach (var ob in Model.Student._VocabluaryList[i].questions)
+                                    {
+                                        <label>@ob.letters /</label>
+                                    }
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._VocabluaryList[i].questions)
+                                {
+                                    if (ob.RightOrNot == 1)
+                                        {
+                                        <h5 class="succesAnswer">@ob.Text</h5>
+                                        }
+                                        else if (ob.RightOrNot == -1)
+                                        {
+                                        <h5 class="wrongAnswer">@ob.Text</h5>
+                                        }
+                                        else
+                                        {
+
+                                        <h5>@ob.Text</h5>
+                                        }
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a href="#" class=" btn btn-success">Проверить</a>
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._VocabluaryList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteVocabluary"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+        
+
+        @if (Model.Student._SentenceList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._SentenceList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Sentence</h3>
+
+                                <div class="col">
+                                    <label>Составьте предложения</label>
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                                @foreach (var ob in Model.Student._SentenceList[i].questions)
+                                {
+                                    if (ob.RightOrNot == 1)
+                                    {
+                                        <h5 class="succesAnswer">@ob.Words</h5>
+                                    }
+                                    else if (ob.RightOrNot == -1)
+                                    {
+                                        <h5 class="wrongAnswer">@ob.Words</h5>
+                                    }
+                                    else
+                                    {
+
+                                        <h5>@ob.Words</h5>
+                                    }
+
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a href="#" class=" btn btn-success">Проверить</a>
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._SentenceList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteSentence"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+       
+
+        @if (Model.Student._InsertList.Count() != 0)
+        {
+            @for (int i = 0; i < Model.Student._InsertList.Count() - 1; i++)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card-deck">
+                        <div class="card m-3">
+                            <div class="card-header text-center">
+                                <h3>Insert</h3>
+
+                                <div class="col">
+                                    <h5>Вставьте нужные слова</h5>
+                                    @for(int j = 0; j < 1; j++)
+                                    {
+                                        string s = "";
+                                        @foreach (var item in Model.Student._InsertList[i].questions)
+                                        {
+
+                                            s += item.StringAnswer + "/";
+                                        }
+                                        @foreach (var item in Model.Student._InsertList[i].words.Split(' '))
+                                        {
+                                            s += item + "/";
+                                        }
+                                        <h5>@s</h5>
+                                    }
+                                </div>
+
+                            </div>
+
+                            <div class="card-body text-center">
+                               
+                                @foreach (var ob in Model.Student._InsertList[i].questions)
+                                {
+
+                                    if (ob.RightOrNot == 1)
+                                    {
+                                        <h5 class="succesAnswer">@ob.Sentence /</h5>
+                                    }
+                                    else if (ob.RightOrNot == -1)
+                                    {
+                                        <h5 class="wrongAnswer">@ob.Sentence /</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5>@ob.Sentence /</h5>
+                                    }
+
+                                }
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a href="#" class=" btn btn-success">Проверить</a>
+                                <button type="submit" asp-route-id="@Model.Student.Id"
+                                    asp-route-taskId="@Model.Student._InsertList[i].Id"
+                                    asp-route-studentId="@Model.Student.Id"
+                                    asp-page-handler="DeleteInsert"
+                                    class="btn btn-danger ">
+                                        Удалить задание
+                                    </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+        
+    </div>
+</form>
