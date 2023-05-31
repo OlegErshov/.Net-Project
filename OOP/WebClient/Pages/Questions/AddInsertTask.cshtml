@@ -100,11 +100,10 @@
                 </div>
 
                 <div class="card-footer text-center mg-3">
-                        <div class="col-12 col-lg-6 m-3">
+                        
                             <input asp-for="Varients" class="form-control mr-2" placeholder="Введите варианты ответов" />
-                            <button type="submit" asp-route-id="@Model.Student.Id"  asp-page-handler="AddVarients" class="btn btn-success m-3 " >Добавить</button>
+                            <button type="submit" asp-route-id="@Model.Student.Id"  asp-page-handler="AddVarients" class="btn btn-success m-3 " >Добавить варианты ответов</button>
 
-                        </div>
 
                     <button type="submit" asp-route-id="@Model.Student.Id" asp-page-handler="AddTask" class="btn btn-success m-3 ">Добавить задание</button>
                 </div>
