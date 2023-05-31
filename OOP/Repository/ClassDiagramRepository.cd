@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Plugin.Authorization.AuthorizationService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repository.Data.AppDbContext" Collapsed="true">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAAAAgAAgAAAAAAAAAAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Data\AppDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Repository.Repositories.QuestionsRepositories.EfQuestionRepository&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIRAAAAAAAAAEAAAAAIAgAAAAAAAAAIIE=</HashCode>
+      <FileName>Repositories\QuestionsRepositories\EfQuestionRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repository.Repositories.TasksRepositories.EfTaskRepository&lt;T, P&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIRAAAAAAAAAEAAAAAIAgAAAAAAAAAIIE=</HashCode>
+      <FileName>Repositories\TasksRepositories\EfTaskRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repository.Repositories.EfRepository&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIRAAAAAAAAAEAAAAAIAgAAAAAAAAAIIE=</HashCode>
+      <FileName>Repositories\EfRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Repository.UnitOfWork.EfUnitOfWork" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAQAAgACEmZAQAAICAAEABAEiAAAgAAAAAgIBAAAA=</HashCode>
+      <FileName>UnitOfWork\EfUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Plugin.Authorization.IAuthorization&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\IAuthorization.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repository.Repositories.QuestionsRepositories.IQuestionRepository&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAEAAAAAIAgAAAAAAAAAIIE=</HashCode>
+      <FileName>Repositories\QuestionsRepositories\IQuestionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repository.Repositories.TasksRepositories.ITaskRepository&lt;T, P&gt;" Collapsed="true">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAEAAAAAIAgAAAAAAAAAIIE=</HashCode>
+      <FileName>Repositories\TasksRepositories\ITaskRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repository.Repositories.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAEAAAAAIAgAAAAAAAAAIIE=</HashCode>
+      <FileName>Repositories\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Repository.UnitOfWork.IUnitOfWork" Collapsed="true">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAgACEiQAQAAIAAAAAAAEgAAAgAAAAAgAAAAAA=</HashCode>
+      <FileName>UnitOfWork\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

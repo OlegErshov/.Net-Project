@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Plugin.Authorization.Student">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACCAAEADAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Data\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Authorization.Mark">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Data\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Authorization.Teacher">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Questions.AnswerTemplate">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Questions\AnswerTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Questions.GrammaQuestion">
+    <Position X="2" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAABAAAA=</HashCode>
+      <FileName>Questions\GrammaQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Questions.InsertQuestion">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Questions\InsertQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Questions.SentenceQuestion">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAA=</HashCode>
+      <FileName>Questions\SentenceQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Questions.VocabluaryQuestion">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAACABAAAA=</HashCode>
+      <FileName>Questions\VocabluaryQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Tasks.GrammaTask">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tasks\GrammaTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Tasks.InsertTask">
+    <Position X="12.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Tasks\InsertTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Tasks.SentenceTask">
+    <Position X="17" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Tasks\SentenceTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Tasks.TaskTemplate&lt;T&gt;">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tasks\TaskTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plugin.Tasks.VocabluaryTask">
+    <Position X="14.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Tasks\VocabluaryTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Plugin.Questions.IQuestion">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Questions\IQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
