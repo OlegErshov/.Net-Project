@@ -1,7 +1,9 @@
+
 ﻿using Plugin.Authorization;
 using Plugin.Questions;
 using Plugin.QuestionsFabrics;
 using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
+
     public class GrammaTask : TaskTemplate<GrammaQuestion>
     {
         
@@ -30,6 +33,7 @@ namespace Plugin.Tasks
                 questions = new List<GrammaQuestion>();
             }
             questions?.Add(gr);
+
         }
 
 

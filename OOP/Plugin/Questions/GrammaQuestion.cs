@@ -1,5 +1,7 @@
+
 ﻿using Plugin.Tasks;
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Questions
 {
+
     [Serializable]
     public class GrammaQuestion : AnswerTemplate
     {
@@ -45,6 +48,7 @@ namespace Plugin.Questions
             //        return false;
             //    }
             //}
+
             return true;
         }
     }

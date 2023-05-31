@@ -1,7 +1,9 @@
+
 ﻿using Plugin.Authorization;
 using Plugin.Questions;
 using Plugin.QuestionsFabrics;
 using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
+
     public class InsertTask : TaskTemplate<InsertQuestion>
     {
        
@@ -28,6 +31,7 @@ namespace Plugin.Tasks
             //InsertFabric insertFabric = new InsertFabric();
             //questions.Add(insertFabric.Create(ques));
             //words.Add(word);
+
         }
 
     }

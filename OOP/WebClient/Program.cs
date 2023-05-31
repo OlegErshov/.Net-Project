@@ -65,6 +65,7 @@ builder.Services.AddScoped<IQuestionService<VocabluaryQuestion>, VocabluaryQuest
 builder.Services.AddScoped<ITaskService<SentenceTask, SentenceQuestion>, SentenceTaskService>();
 builder.Services.AddScoped<IQuestionService<SentenceQuestion>, SentenceQuestonService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

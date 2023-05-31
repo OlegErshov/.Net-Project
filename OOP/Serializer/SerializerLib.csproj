@@ -11,8 +11,10 @@
     <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
   </ItemGroup>
 
+
   <ItemGroup>
     <ProjectReference Include="..\Plugin\Plugin.csproj" />
   </ItemGroup>
+
 
 </Project>

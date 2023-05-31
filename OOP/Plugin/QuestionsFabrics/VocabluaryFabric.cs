@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.QuestionsFabrics
 {
+
     public class VocabluaryFabric 
     {
         //public IQuestion Create(QuestionTemplate question)
@@ -14,5 +15,6 @@ namespace Plugin.QuestionsFabrics
         //    VocabluaryQuestion q = new VocabluaryQuestion(question.Sentence, question.letters, question.Answer);
         //    return q;
         //}
+
     }
 }

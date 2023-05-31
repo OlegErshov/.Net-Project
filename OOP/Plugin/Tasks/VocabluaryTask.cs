@@ -1,6 +1,8 @@
+
 ﻿using Plugin.Authorization;
 using Plugin.Questions;
 using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.Tasks
 {
+
     public class VocabluaryTask : TaskTemplate<VocabluaryQuestion>
     {
         public Student Student { get; set; }
@@ -17,6 +20,7 @@ namespace Plugin.Tasks
         {
             questions= new List<VocabluaryQuestion>();
         }
+
         void AddQuestion(string text, string letters, string answer)
         {
             VocabluaryQuestion q = new VocabluaryQuestion(text, letters, answer);
@@ -28,6 +32,7 @@ namespace Plugin.Tasks
             List<bool> result = new List<bool>();
             for (int i = 0; i < questions.Count; i++)
             {
+
              //   if (questions[i].answer == list[i])
                 //{
                 //    result.Add(true);
@@ -36,6 +41,7 @@ namespace Plugin.Tasks
                 //{
                 //    result.Add(false);
                 //}
+
             }
             return result;
         }

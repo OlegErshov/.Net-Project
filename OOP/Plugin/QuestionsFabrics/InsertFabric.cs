@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.QuestionsFabrics
 {
+
     public class InsertFabric 
     {
 
@@ -15,5 +16,6 @@ namespace Plugin.QuestionsFabrics
         //    InsertQuestion q = new InsertQuestion(question.word, question.Sentence);
         //    return q;
         //}
+
     }
 }
